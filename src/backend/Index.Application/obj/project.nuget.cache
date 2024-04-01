@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "FdRPjEdC4QrMOczXyHzIx4EfMYINotd72fo/TNlAO6mUFBgbT+GprTbJ6UJ/zR0NqwuEP+TpEvBuRJm4GHkkCw==",
+  "success": true,
+  "projectFilePath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\Index.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jash\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\jash\\.nuget\\packages\\mediatr\\12.2.0\\mediatr.12.2.0.nupkg.sha512",
+    "C:\\Users\\jash\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\jash\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.3\\microsoft.aspnetcore.openapi.8.0.3.nupkg.sha512",
+    "C:\\Users\\jash\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\jash\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512"
+  ],
+  "logs": []
+}
