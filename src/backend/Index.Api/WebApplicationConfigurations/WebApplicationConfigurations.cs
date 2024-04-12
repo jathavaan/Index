@@ -16,4 +16,10 @@ public static class WebApplicationConfigurations
 
         return builder;
     }
+
+    internal static WebApplicationBuilder ConfigureControllers(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddControllers();
+        return builder;
+    }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj": {}
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj": {
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
         "projectName": "Index.Infrastructure",
-        "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
+        "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Infrastructure\\obj\\",
+        "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",

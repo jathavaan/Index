@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Api\\Index.Api.csproj": {}
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Api\\Index.Api.csproj": {}
   },
   "projects": {
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Api\\Index.Api.csproj": {
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Api\\Index.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Api\\Index.Api.csproj",
+        "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Api\\Index.Api.csproj",
         "projectName": "Index.Api",
-        "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Api\\Index.Api.csproj",
+        "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Api\\Index.Api.csproj",
         "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Api\\obj\\",
+        "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,14 +28,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\Index.Application.csproj": {
-                "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\Index.Application.csproj"
+              "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Application\\Index.Application.csproj": {
+                "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Application\\Index.Application.csproj"
               },
-              "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj": {
-                "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj"
+              "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj": {
+                "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj"
               },
-              "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Presistence\\Index.Presistence.csproj": {
-                "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Presistence\\Index.Presistence.csproj"
+              "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj": {
+                "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj"
               }
             }
           }
@@ -59,6 +59,12 @@
               "version": "[8.0.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.3, )"
             },
@@ -90,14 +96,14 @@
         }
       }
     },
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\Index.Application.csproj": {
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Application\\Index.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\Index.Application.csproj",
+        "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Application\\Index.Application.csproj",
         "projectName": "Index.Application",
-        "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\Index.Application.csproj",
+        "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Application\\Index.Application.csproj",
         "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\obj\\",
+        "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -114,8 +120,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
-                "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj"
+              "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
+                "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj"
+              },
+              "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj": {
+                "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj"
               }
             }
           }
@@ -130,6 +139,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.9.0, )"
@@ -163,14 +176,14 @@
         }
       }
     },
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj",
+        "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj",
         "projectName": "Index.Domain",
-        "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj",
+        "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj",
         "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\obj\\",
+        "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -218,14 +231,14 @@
         }
       }
     },
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj": {
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
         "projectName": "Index.Infrastructure",
-        "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
+        "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Infrastructure\\obj\\",
+        "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -283,14 +296,14 @@
         }
       }
     },
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Presistence\\Index.Presistence.csproj": {
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Presistence\\Index.Presistence.csproj",
+        "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj",
         "projectName": "Index.Presistence",
-        "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Presistence\\Index.Presistence.csproj",
+        "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj",
         "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Presistence\\obj\\",
+        "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -307,8 +320,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
-                "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj"
+              "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
+                "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj"
               }
             }
           }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\Index.Application.csproj": {}
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Application\\Index.Application.csproj": {}
   },
   "projects": {
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\Index.Application.csproj": {
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Application\\Index.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\Index.Application.csproj",
+        "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Application\\Index.Application.csproj",
         "projectName": "Index.Application",
-        "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\Index.Application.csproj",
+        "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Application\\Index.Application.csproj",
         "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Application\\obj\\",
+        "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
-                "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj"
+              "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
+                "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj"
+              },
+              "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj": {
+                "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj"
               }
             }
           }
@@ -44,6 +47,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.9.0, )"
@@ -77,14 +84,14 @@
         }
       }
     },
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj",
+        "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj",
         "projectName": "Index.Domain",
-        "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj",
+        "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj",
         "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\obj\\",
+        "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -112,6 +119,81 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.103/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj",
+        "projectName": "Index.Presistence",
+        "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj",
+        "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
+        "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
+                "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

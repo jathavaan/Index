@@ -22,3 +22,15 @@ C:\Code\Source\Repos\index-backend\src\backend\Index.Domain\obj\Debug\net8.0\Ind
 C:\Code\Source\Repos\index-backend\src\backend\Index.Domain\obj\Debug\net8.0\refint\Index.Domain.dll
 C:\Code\Source\Repos\index-backend\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.pdb
 C:\Code\Source\Repos\index-backend\src\backend\Index.Domain\obj\Debug\net8.0\ref\Index.Domain.dll
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\bin\Debug\net8.0\Index.Domain.deps.json
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\bin\Debug\net8.0\Index.Domain.dll
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\bin\Debug\net8.0\Index.Domain.pdb
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.AssemblyInfoInputs.cache
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.AssemblyInfo.cs
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.csproj.CoreCompileInputs.cache
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.sourcelink.json
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.dll
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\refint\Index.Domain.dll
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.pdb
+C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\ref\Index.Domain.dll

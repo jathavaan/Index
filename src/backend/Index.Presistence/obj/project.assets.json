@@ -4089,11 +4089,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Presistence\\Index.Presistence.csproj",
+      "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj",
       "projectName": "Index.Presistence",
-      "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Presistence\\Index.Presistence.csproj",
+      "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\Index.Presistence.csproj",
       "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Presistence\\obj\\",
+      "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Presistence\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4110,8 +4110,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
-              "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj"
+            "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
+              "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj"
             }
           }
         }

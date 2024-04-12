@@ -32,6 +32,8 @@ public abstract class IndexControllerBase : ControllerBase
     private ActionResult GetErrorResult(Response result)
         => result.ErrorCode switch
         {
+            IndexErrorCode.AlreadyExists => Problem(result.Error),
+            IndexErrorCode.Forbidden => Forbid(result.Error),
             _ => Problem(result.Error)
         };
 }

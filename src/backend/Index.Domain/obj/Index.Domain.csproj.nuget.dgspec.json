@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj": {}
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
+    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj",
+        "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj",
         "projectName": "Index.Domain",
-        "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\Index.Domain.csproj",
+        "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\Index.Domain.csproj",
         "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.Domain\\obj\\",
+        "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",

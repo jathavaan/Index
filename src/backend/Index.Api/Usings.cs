@@ -1,8 +1,10 @@
-﻿global using Index.Application;
-global using Index.Presistence.Context;
-global using Index.Infrastructure;
-global using MediatR;
+﻿global using MediatR;
 global using Microsoft.AspNetCore.Mvc;
-global using Index.Application.Common;
 global using Microsoft.AspNetCore.Mvc.ApiExplorer;
-
+global using Index.Api.Swagger.SwaggerApiConvention;
+global using Index.Infrastructure;
+global using Index.Presistence.Context;
+global using Index.Application;
+global using Index.Application.Common;
+global using Index.Application.VMs;
+global using Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;

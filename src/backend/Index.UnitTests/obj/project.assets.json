@@ -5523,11 +5523,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj",
+      "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj",
       "projectName": "Index.UnitTests",
-      "projectPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj",
+      "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj",
       "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\Source\\Repos\\index-backend\\src\\backend\\Index.UnitTests\\obj\\",
+      "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
