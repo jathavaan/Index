@@ -11,6 +11,7 @@ builder.Services.AddMediatR();
 
 builder.ConfigureConfigurations();
 builder.ConfigureDatabase();
+builder.ConfigureLogging();
 
 var app = builder.Build();
 

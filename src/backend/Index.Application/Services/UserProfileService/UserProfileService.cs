@@ -1,4 +1,6 @@
 ﻿using Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;
+using Index.Application.ViewModels;
+using Index.Domain.Entities.UserModule;
 using Microsoft.EntityFrameworkCore;
 
 namespace Index.Application.Services.UserProfileService;
@@ -10,7 +12,7 @@ public class UserProfileService : IUserProfileService
     public UserProfileService(IndexDbContext indexDbContext)
         => _indexDbContext = indexDbContext;
 
-    public async Task<UserProfileVM> CreateUserProfile(CreateUserProfileCommandDto dto)
+    public async Task<UserProfileVm> CreateUserProfile(CreateUserProfileCommandDto dto)
     {
         var userProfile = new UserProfile
         {
@@ -25,7 +27,7 @@ public class UserProfileService : IUserProfileService
         _indexDbContext.UserProfiles.Add(userProfile);
         await _indexDbContext.SaveChangesAsync();
 
-        return new UserProfileVM
+        return new UserProfileVm
         {
             FirstName = userProfile.FirstName,
             Surname = userProfile.Surname,
@@ -34,10 +36,10 @@ public class UserProfileService : IUserProfileService
         };
     }
 
-    public async Task<UserProfileVM?> GetUserProfileByIdOrEmail(string idOrEmail)
+    public async Task<UserProfileVm?> GetUserProfileByIdOrEmail(string idOrEmail)
         => await _indexDbContext.UserProfiles
             .Where(x => x.Id == idOrEmail || x.Email == idOrEmail)
-            .Select(x => new UserProfileVM
+            .Select(x => new UserProfileVm
             {
                 Email = x.Email,
                 FirstName = x.FirstName,

@@ -511,19 +511,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jash\\.nuget\\packages\\": {}
+    "C:\\Users\\Jathavaan Shankarr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Jathavaan Shankarr\\Code\\Private\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
       "projectName": "Index.Infrastructure",
-      "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\Jathavaan Shankarr\\Code\\Private\\Index\\src\\backend\\Index.Infrastructure\\Index.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\Jathavaan Shankarr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jathavaan Shankarr\\Code\\Private\\Index\\src\\backend\\Index.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jathavaan Shankarr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -574,7 +574,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.103/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

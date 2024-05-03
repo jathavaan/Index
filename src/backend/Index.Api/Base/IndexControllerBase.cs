@@ -1,18 +1,13 @@
 ﻿namespace Index.Api.Base;
 
-public abstract class IndexControllerBase : ControllerBase
+public abstract class IndexControllerBase(IMediator mediator) : ControllerBase
 {
-    private readonly IMediator _mediator;
-
-    protected IndexControllerBase(IMediator mediator)
-        => _mediator = mediator;
-
     internal async Task<ActionResult<TResult>> SendRequest<TResult, TRequest>(TRequest? request)
         where TRequest : Request<Response<TResult>>
     {
         if (request is null) return BadRequest();
 
-        var response = await _mediator.Send(request);
+        var response = await mediator.Send(request);
         return !string.IsNullOrWhiteSpace(response.Error) || response.ErrorCode is not null
             ? GetErrorResult(response)
             : Ok(response.Result);
@@ -23,7 +18,7 @@ public abstract class IndexControllerBase : ControllerBase
     {
         if (command is null) return BadRequest();
 
-        var commandResponse = await _mediator.Send(command);
+        var commandResponse = await mediator.Send(command);
         return !string.IsNullOrWhiteSpace(commandResponse.Error) || commandResponse.ErrorCode is not null
             ? GetErrorResult(commandResponse)
             : Ok(commandResponse.Result);
@@ -33,7 +28,8 @@ public abstract class IndexControllerBase : ControllerBase
         => result.ErrorCode switch
         {
             IndexErrorCode.AlreadyExists => Problem(result.Error),
-            IndexErrorCode.Forbidden => Forbid(result.Error),
+            IndexErrorCode.Forbidden => Forbid(result.Error!),
+            IndexErrorCode.NotFound => NotFound(result.Error),
             _ => Problem(result.Error)
         };
 }

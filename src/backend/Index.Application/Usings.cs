@@ -2,11 +2,13 @@
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using FluentValidation;
-
+global using Microsoft.EntityFrameworkCore;
 global using Index.Application.Common;
-global using Index.Application.VMs;
 global using Index.Application.Middleware;
-global using Index.Application.Common;
 global using Index.Presistence.Context;
 global using Index.Domain.Enums;
-global using Index.Domain.Entities;
+global using Index.Domain.Entities.SubjectModule;
+global using Index.Application.Services.UserProfileService;
+global using Index.Application.Services.ReportCardService;
+global using Index.Application.Services.SubjectService;
+global using Index.Application.ViewModels;

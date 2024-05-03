@@ -1,20 +1,21 @@
 ﻿using Index.Application.Services.UserProfileService;
+using Index.Application.ViewModels;
 
 namespace Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;
 
-public class CreateUserProfileCommandHandler : IRequestHandler<CreateUserProfileCommand, CommandResponse<UserProfileVM>>
+public class CreateUserProfileCommandHandler : IRequestHandler<CreateUserProfileCommand, CommandResponse<UserProfileVm>>
 {
     private readonly IUserProfileService _userProfileService;
 
     public CreateUserProfileCommandHandler(IUserProfileService userProfileService)
         => _userProfileService = userProfileService;
 
-    public async Task<CommandResponse<UserProfileVM>> Handle(CreateUserProfileCommand request,
+    public async Task<CommandResponse<UserProfileVm>> Handle(CreateUserProfileCommand request,
         CancellationToken cancellationToken)
     {
         if (await _userProfileService.GetUserProfileByIdOrEmail(request.Dto.Email) is not null)
         {
-            return new CommandResponse<UserProfileVM>
+            return new CommandResponse<UserProfileVm>
             {
                 ErrorCode = IndexErrorCode.AlreadyExists,
                 Error = $"{request.Dto.Email} is taken. Please login with the existing account or try another email."
@@ -22,7 +23,7 @@ public class CreateUserProfileCommandHandler : IRequestHandler<CreateUserProfile
         }
 
         var userProfile = await _userProfileService.CreateUserProfile(request.Dto);
-        return new CommandResponse<UserProfileVM>
+        return new CommandResponse<UserProfileVm>
         {
             Result = userProfile
         };

@@ -1,5 +1,3 @@
-using Index.Application.Services.UserProfileService;
-
 namespace Index.Application;
 
 public static class ApplicationServiceRegistration
@@ -9,6 +7,8 @@ public static class ApplicationServiceRegistration
     {
         // Transient services
         services.AddTransient<IUserProfileService, UserProfileService>();
+        services.AddTransient<ISubjectService, SubjectService>();
+        services.AddTransient<IReportCardService, ReportCardService>();
 
         // Hosted services
 

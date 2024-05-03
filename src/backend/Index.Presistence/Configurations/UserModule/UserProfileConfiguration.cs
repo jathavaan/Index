@@ -1,13 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Index.Presistence.Configurations;
+﻿namespace Index.Presistence.Configurations.UserModule;
 
 public class UserProfileConfiguration : IEntityTypeConfiguration<UserProfile>
 {
     public void Configure(EntityTypeBuilder<UserProfile> builder)
     {
         builder.HasKey(x => x.Id);
-
         builder.Property(x => x.Id)
             .ValueGeneratedNever()
             .IsRequired();
@@ -22,6 +19,12 @@ public class UserProfileConfiguration : IEntityTypeConfiguration<UserProfile>
             .IsRequired();
 
         builder.Property(x => x.Password)
+            .IsRequired();
+
+        builder.HasMany(x => x.ReportCards)
+            .WithOne(x => x.UserProfile)
+            .HasForeignKey(x => x.UserProfileId)
+            .HasPrincipalKey(x => x.Id)
             .IsRequired();
     }
 }

@@ -1,11 +1,17 @@
-﻿namespace Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;
+﻿using Index.Application.ViewModels;
 
-public class CreateUserProfileCommand : Command<CommandResponse<UserProfileVM>>
+namespace Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;
+
+public class CreateUserProfileCommand(CreateUserProfileCommandDto dto) : Command<CommandResponse<UserProfileVm>>
 {
-    public CreateUserProfileCommandDto Dto { get; set; }
+    public CreateUserProfileCommandDto Dto { get; set; } = dto;
+}
 
-    public CreateUserProfileCommand(CreateUserProfileCommandDto dto)
-    {
-        Dto = dto;
-    }
+public class CreateUserProfileCommandDto
+{
+    public string FirstName { get; set; } = null!;
+    public string Surname { get; set; } = null!;
+    public string Email { get; set; } = null!;
+    public string Password { get; set; } = null!;
+    public int AccessLevel { get; set; }
 }

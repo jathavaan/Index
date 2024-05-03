@@ -34,3 +34,15 @@ C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domai
 C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\refint\Index.Domain.dll
 C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.pdb
 C:\Code\Source\Repos\Index\src\backend\Index.Domain\obj\Debug\net8.0\ref\Index.Domain.dll
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\bin\Debug\net8.0\Index.Domain.deps.json
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\bin\Debug\net8.0\Index.Domain.dll
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\bin\Debug\net8.0\Index.Domain.pdb
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.AssemblyInfoInputs.cache
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.AssemblyInfo.cs
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.sourcelink.json
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.dll
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\obj\Debug\net8.0\refint\Index.Domain.dll
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\obj\Debug\net8.0\Index.Domain.pdb
+C:\Users\Jathavaan Shankarr\Code\Private\Index\src\backend\Index.Domain\obj\Debug\net8.0\ref\Index.Domain.dll

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj": {}
+    "C:\\Users\\Jathavaan Shankarr\\Code\\Private\\Index\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj": {
+    "C:\\Users\\Jathavaan Shankarr\\Code\\Private\\Index\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\Jathavaan Shankarr\\Code\\Private\\Index\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj",
         "projectName": "Index.UnitTests",
-        "projectPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj",
-        "packagesPath": "C:\\Users\\jash\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Source\\Repos\\Index\\src\\backend\\Index.UnitTests\\obj\\",
+        "projectPath": "C:\\Users\\Jathavaan Shankarr\\Code\\Private\\Index\\src\\backend\\Index.UnitTests\\Index.UnitTests.csproj",
+        "packagesPath": "C:\\Users\\Jathavaan Shankarr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jathavaan Shankarr\\Code\\Private\\Index\\src\\backend\\Index.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jash\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jathavaan Shankarr\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

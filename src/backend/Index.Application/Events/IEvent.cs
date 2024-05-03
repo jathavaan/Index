@@ -2,7 +2,7 @@
 
 public interface IEvent : INotification
 {
-    string? CorrelationId { get; set;  }
+    string? CorrelationId { get; set; }
 }
 
 public class Event : IEvent

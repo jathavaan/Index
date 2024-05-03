@@ -17,6 +17,7 @@ public class CreateUserProfileCommandValidator : AbstractValidator<CreateUserPro
             .NotNull();
 
         RuleFor(x => x.Dto.Email)
+            .EmailAddress()
             .NotEmpty()
             .NotNull();
 
