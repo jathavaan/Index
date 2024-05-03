@@ -29,6 +29,8 @@ public class GetReportCardByIdQueryHandler(IReportCardService reportCardService)
                 {
                     SubjectCode = rcs.Subject.SubjectCode,
                     SubjectName = rcs.Subject.Name,
+                    Year = rcs.Year,
+                    Semester = rcs.Semester,
                     Credit = rcs.Subject.Credit,
                     Grade = rcs.Grade
                 })

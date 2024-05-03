@@ -13,6 +13,8 @@ public class SubjectWithGradeVm
 {
     public string SubjectCode { get; set; } = null!;
     public string SubjectName { get; set; } = null!;
+    public int Year { get; set; }
+    public Semester Semester { get; set; }
     public double Credit { get; set; }
     public Grade? Grade { get; set; }
 }
