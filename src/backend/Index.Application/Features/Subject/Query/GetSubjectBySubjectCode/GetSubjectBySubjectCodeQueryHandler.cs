@@ -6,7 +6,7 @@ public class GetSubjectBySubjectCodeQueryHandler(ISubjectService subjectService)
     public async Task<Response<SubjectVm>> Handle(GetSubjectBySubjectCodeQuery request,
         CancellationToken cancellationToken)
     {
-        var subject = await subjectService.GetSubject(null, request.SubjectCode);
+        var subject = await subjectService.GetSubject(request.SubjectCode);
         if (subject is null)
         {
             return new Response<SubjectVm>
