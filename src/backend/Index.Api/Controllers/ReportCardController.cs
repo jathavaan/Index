@@ -30,9 +30,10 @@ public class ReportCardController(IMediator mediator) : IndexControllerBase(medi
     [Produces("application/json", Type = typeof(bool))]
     [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
     [ActionName(nameof(AddSubjectToReportCard))]
-    public async Task<ActionResult<bool>> AddSubjectToReportCard(string subjectCode, int reportCardId, int grade = -2)
+    public async Task<ActionResult<bool>> AddSubjectToReportCard(string subjectCode, int reportCardId, int year,
+        int semester, int grade = -2)
         => await SendCommand<bool, AddSubjectToReportCardCommand>(
-            new AddSubjectToReportCardCommand(subjectCode, reportCardId, grade));
+            new AddSubjectToReportCardCommand(subjectCode, reportCardId, year, semester, grade));
 
     [HttpDelete("delete/{reportCardId}")]
     [Produces("application/json", Type = typeof(bool))]

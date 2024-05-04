@@ -5,7 +5,7 @@ public class ReportCardSubjectConfiguration : IEntityTypeConfiguration<ReportCar
     public void Configure(EntityTypeBuilder<ReportCardSubject> builder)
     {
         builder.ToTable("ReportCardSubject", "sub");
-        builder.HasKey(x => new { x.ReportCardId, SubjectId = x.SubjectCode });
+        builder.HasKey(x => new { x.ReportCardId, x.SubjectCode, x.Year });
 
         builder.HasOne(x => x.Subject)
             .WithMany(x => x.ReportCardSubjects)

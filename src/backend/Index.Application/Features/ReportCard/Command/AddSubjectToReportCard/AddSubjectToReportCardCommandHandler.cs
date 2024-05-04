@@ -8,6 +8,6 @@ public class AddSubjectToReportCardCommandHandler(IReportCardService reportcardS
         => new()
         {
             Result = await reportcardService.AddSubjectToReportCard(request.SubjectCode, request.ReportCardId,
-                (Grade)request.Grade)
+                (Grade)request.Grade, request.Year, (Semester)request.Semester)
         };
 }

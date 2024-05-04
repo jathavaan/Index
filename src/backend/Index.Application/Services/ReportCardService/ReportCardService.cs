@@ -38,9 +38,9 @@ public class ReportCardService(IndexDbContext indexDbContext, ISubjectService su
             .ThenInclude(rcs => rcs.Subject)
             .Select(
                 rc => rc.ReportCardSubjects
-                    .Where(rcs => rcs.Grade != null && (int)rcs.Grade > 0)
+                    .Where(rcs => (int)rcs.Grade > 0)
                     .Select(
-                        rcs => new Tuple<Grade, double>((Grade)rcs.Grade!, rcs.Subject.Credit)
+                        rcs => new Tuple<Grade, double>(rcs.Grade, rcs.Subject.Credit)
                     )
                     .ToList()
             )
@@ -86,7 +86,8 @@ public class ReportCardService(IndexDbContext indexDbContext, ISubjectService su
         return true;
     }
 
-    public async Task<bool> AddSubjectToReportCard(string subjectCode, int reportCardId, Grade? grade)
+    public async Task<bool> AddSubjectToReportCard(string subjectCode, int reportCardId, Grade grade, int year,
+        Semester semester)
     {
         var reportCard = await GetReportCard(reportCardId) ??
                          throw new Exception($"Could not find a report card with id {reportCardId}");
@@ -109,6 +110,8 @@ public class ReportCardService(IndexDbContext indexDbContext, ISubjectService su
         {
             ReportCardId = reportCard.Id,
             SubjectCode = subject.SubjectCode,
+            Year = year,
+            Semester = semester,
             Grade = grade
         };
 
