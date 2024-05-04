@@ -5,7 +5,7 @@ public class SubjectConfiguration : IEntityTypeConfiguration<Subject>
     public void Configure(EntityTypeBuilder<Subject> builder)
     {
         builder.HasKey(x => x.SubjectCode);
-        builder.ToTable("Subject", "sub");
+        builder.ToTable("Subjects", "sub");
 
         builder.Property(x => x.SubjectCode)
             .IsRequired()
@@ -15,7 +15,7 @@ public class SubjectConfiguration : IEntityTypeConfiguration<Subject>
         builder.Property(x => x.Name)
             .IsRequired();
 
-        builder.Property(x => x.Credit)
+        builder.Property(x => x.Credits)
             .IsRequired();
 
         builder.HasMany(x => x.ReportCardSubjects)

@@ -4,6 +4,7 @@ using Index.Presistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Index.Presistence.Migrations
 {
     [DbContext(typeof(IndexDbContext))]
-    partial class IndexDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240504140741_AssignmentTables")]
+    partial class AssignmentTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +45,7 @@ namespace Index.Presistence.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 5, 4, 16, 12, 3, 711, DateTimeKind.Local).AddTicks(1303));
+                        .HasDefaultValue(new DateTime(2024, 5, 4, 16, 7, 41, 124, DateTimeKind.Local).AddTicks(5467));
 
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime2");
@@ -62,7 +65,7 @@ namespace Index.Presistence.Migrations
 
                     b.HasIndex("AssignmentGroupId");
 
-                    b.ToTable("Assignments", "sub");
+                    b.ToTable("Assignment", "sub");
                 });
 
             modelBuilder.Entity("Index.Domain.Entities.SubjectModule.AssignmentGroup", b =>
@@ -76,7 +79,7 @@ namespace Index.Presistence.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 5, 4, 16, 12, 3, 711, DateTimeKind.Local).AddTicks(5029));
+                        .HasDefaultValue(new DateTime(2024, 5, 4, 16, 7, 41, 124, DateTimeKind.Local).AddTicks(8920));
 
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime2");
@@ -99,7 +102,7 @@ namespace Index.Presistence.Migrations
 
                     b.HasIndex("UserProfileId");
 
-                    b.ToTable("AssignmentGroups", "sub");
+                    b.ToTable("AssignmentGroup", "sub");
                 });
 
             modelBuilder.Entity("Index.Domain.Entities.SubjectModule.ReportCard", b =>
@@ -113,7 +116,7 @@ namespace Index.Presistence.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 5, 4, 16, 12, 3, 712, DateTimeKind.Local).AddTicks(7150));
+                        .HasDefaultValue(new DateTime(2024, 5, 4, 16, 7, 41, 125, DateTimeKind.Local).AddTicks(7302));
 
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime2");
@@ -130,7 +133,7 @@ namespace Index.Presistence.Migrations
 
                     b.HasIndex("UserProfileId");
 
-                    b.ToTable("ReportCards", "sub");
+                    b.ToTable("ReportCard", "sub");
                 });
 
             modelBuilder.Entity("Index.Domain.Entities.SubjectModule.ReportCardSubject", b =>
@@ -154,7 +157,7 @@ namespace Index.Presistence.Migrations
 
                     b.HasIndex("SubjectCode");
 
-                    b.ToTable("ReportCardSubjects", "sub");
+                    b.ToTable("ReportCardSubject", "sub");
                 });
 
             modelBuilder.Entity("Index.Domain.Entities.SubjectModule.Subject", b =>
@@ -172,7 +175,7 @@ namespace Index.Presistence.Migrations
 
                     b.HasKey("SubjectCode");
 
-                    b.ToTable("Subjects", "sub");
+                    b.ToTable("Subject", "sub");
 
                     b.HasData(
                         new

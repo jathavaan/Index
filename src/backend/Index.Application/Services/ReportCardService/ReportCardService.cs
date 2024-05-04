@@ -40,7 +40,7 @@ public class ReportCardService(IndexDbContext indexDbContext, ISubjectService su
                 rc => rc.ReportCardSubjects
                     .Where(rcs => (int)rcs.Grade > 0)
                     .Select(
-                        rcs => new Tuple<Grade, double>(rcs.Grade, rcs.Subject.Credit)
+                        rcs => new Tuple<Grade, double>(rcs.Grade, rcs.Subject.Credits)
                     )
                     .ToList()
             )
@@ -59,7 +59,7 @@ public class ReportCardService(IndexDbContext indexDbContext, ISubjectService su
 
         return reportCard.ReportCardSubjects
             .Select(rcs => rcs.Subject)
-            .Select(s => s.Credit)
+            .Select(s => s.Credits)
             .Sum();
     }
 

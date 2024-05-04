@@ -22,7 +22,7 @@ public class GetSubjectBySubjectCodeQueryHandler(ISubjectService subjectService)
             {
                 SubjectCode = subject.SubjectCode,
                 SubjectName = subject.Name,
-                Credit = subject.Credit
+                Credit = subject.Credits
             }
         };
     }

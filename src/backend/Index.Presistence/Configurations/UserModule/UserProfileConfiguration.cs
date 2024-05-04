@@ -26,5 +26,10 @@ public class UserProfileConfiguration : IEntityTypeConfiguration<UserProfile>
             .HasForeignKey(x => x.UserProfileId)
             .HasPrincipalKey(x => x.Id)
             .IsRequired();
+
+        builder.HasMany(x => x.AssignmentGroups)
+            .WithOne(x => x.UserProfile)
+            .HasForeignKey(x => x.UserProfileId)
+            .HasPrincipalKey(x => x.Id);
     }
 }
