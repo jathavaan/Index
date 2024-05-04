@@ -26,6 +26,10 @@ public class AssignmentGroupConfiguration : IEntityTypeConfiguration<AssignmentG
             .IsRequired()
             .ValueGeneratedNever();
 
+        builder.Property(x => x.AssignmentsRequired)
+            .IsRequired()
+            .ValueGeneratedNever();
+
         builder.Property(x => x.UserProfileId)
             .IsRequired();
 
