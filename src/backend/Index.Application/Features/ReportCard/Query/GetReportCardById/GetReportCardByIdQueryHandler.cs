@@ -31,7 +31,7 @@ public class GetReportCardByIdQueryHandler(IReportCardService reportCardService)
                     SubjectName = rcs.Subject.Name,
                     Year = rcs.Year,
                     Semester = rcs.Semester,
-                    Credit = rcs.Subject.Credit,
+                    Credit = rcs.Subject.Credits,
                     Grade = rcs.Grade
                 })
                 .ToList(),

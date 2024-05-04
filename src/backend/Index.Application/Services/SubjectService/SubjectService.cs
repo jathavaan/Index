@@ -21,7 +21,7 @@ public class SubjectService(IndexDbContext indexDbContext) : ISubjectService
         {
             SubjectCode = subjectCode,
             Name = name,
-            Credit = credit
+            Credits = credit
         };
 
         indexDbContext.Subjects.Add(subject);
@@ -38,7 +38,7 @@ public class SubjectService(IndexDbContext indexDbContext) : ISubjectService
         if (subject is null) throw new Exception($"Subject with subject code {subjectCode} does not exist");
 
         if (name is not null) subject.Name = name;
-        if (credit is not null) subject.Credit = (double)credit!;
+        if (credit is not null) subject.Credits = (double)credit!;
 
         indexDbContext.Subjects.Update(subject);
         await indexDbContext.SaveChangesAsync();

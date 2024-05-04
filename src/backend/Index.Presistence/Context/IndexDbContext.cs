@@ -7,6 +7,8 @@ public partial class IndexDbContext(DbContextOptions<IndexDbContext> options) : 
     public virtual DbSet<Subject> Subjects { get; set; }
     public virtual DbSet<ReportCard> ReportCards { get; set; }
     public virtual DbSet<ReportCardSubject> ReportCardSubjects { get; set; }
+    public virtual DbSet<AssignmentGroup> AssignmentGroups { get; set; }
+    public virtual DbSet<Assignment> Assignments { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
