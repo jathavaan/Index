@@ -97,10 +97,10 @@ public class ReportCardService(IndexDbContext indexDbContext, ISubjectService su
             return false;
         }
 
-        var subject = await subjectService.GetSubject(null, subjectCode) ??
+        var subject = await subjectService.GetSubject(subjectCode) ??
                       throw new Exception($"Could not find a subject with the id {subjectCode}");
 
-        if (reportCard.ReportCardSubjects.Any(x => x.Subject.Id == subject.Id))
+        if (reportCard.ReportCardSubjects.Any(x => x.Subject.SubjectCode == subject.SubjectCode))
         {
             throw new Exception(
                 $"{subject.SubjectCode} {subject.Name} has already been added to the report card with id {reportCard.Id}");
@@ -109,7 +109,7 @@ public class ReportCardService(IndexDbContext indexDbContext, ISubjectService su
         ReportCardSubject reportCardSubject = new()
         {
             ReportCardId = reportCard.Id,
-            SubjectId = subject.Id,
+            SubjectCode = subject.SubjectCode,
             Year = year,
             Semester = semester,
             Grade = grade
@@ -120,10 +120,10 @@ public class ReportCardService(IndexDbContext indexDbContext, ISubjectService su
         return true;
     }
 
-    public async Task<bool> RemoveSubjectFromReportCard(int subjectId, int reportCardId)
+    public async Task<bool> RemoveSubjectFromReportCard(string subjectCode, int reportCardId)
     {
         var reportCardSubject = await indexDbContext.ReportCardSubjects
-            .Where(x => x.ReportCardId == reportCardId && x.SubjectId == subjectId)
+            .Where(x => x.ReportCardId == reportCardId && x.SubjectCode == subjectCode)
             .FirstOrDefaultAsync() ?? throw new Exception($"Subject has not been added to the report card");
 
         indexDbContext.ReportCardSubjects.Remove(reportCardSubject);

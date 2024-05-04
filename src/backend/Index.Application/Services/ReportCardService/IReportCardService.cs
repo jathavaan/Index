@@ -9,9 +9,8 @@ public interface IReportCardService
     public Task<double> GetReportCardTotalCredits(int id);
     public Task<bool> UpdateReportCardName(int id, string name);
     public Task<bool> DeleteReportCard(int id);
-
     public Task<bool> AddSubjectToReportCard(string subjectCode, int reportCardId, Grade grade, int year,
         Semester semester);
-
-    public Task<bool> RemoveSubjectFromReportCard(int subjectId, int reportCardId);
+    public Task<bool> AddSubjectToReportCard(string subjectCode, int reportCardId, Grade? grade);
+    public Task<bool> RemoveSubjectFromReportCard(string subjectCode, int reportCardId);
 }

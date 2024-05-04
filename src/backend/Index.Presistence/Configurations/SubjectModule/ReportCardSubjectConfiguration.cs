@@ -5,12 +5,12 @@ public class ReportCardSubjectConfiguration : IEntityTypeConfiguration<ReportCar
     public void Configure(EntityTypeBuilder<ReportCardSubject> builder)
     {
         builder.ToTable("ReportCardSubject", "sub");
-        builder.HasKey(x => new { x.ReportCardId, x.SubjectId, x.Year });
+        builder.HasKey(x => new { x.ReportCardId, x.SubjectCode, x.Year });
 
         builder.HasOne(x => x.Subject)
             .WithMany(x => x.ReportCardSubjects)
-            .HasPrincipalKey(x => x.Id)
-            .HasForeignKey(x => x.SubjectId)
+            .HasPrincipalKey(x => x.SubjectCode)
+            .HasForeignKey(x => x.SubjectCode)
             .IsRequired();
 
         builder.HasOne(x => x.ReportCard)
