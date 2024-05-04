@@ -2,7 +2,7 @@
 
 public class ReportCardSubject
 {
-    public int SubjectId { get; set; }
+    public string SubjectCode { get; set; } = null!;
     public int ReportCardId { get; set; }
     public Grade? Grade { get; set; }
 
