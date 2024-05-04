@@ -25,6 +25,7 @@ public static class ApplicationServiceRegistration
 
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ErrorHandlingPipelineBehaviour<,>));
             cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(CommandValidatorPipelineBehaviour<,>));
+            cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehaviour<,>));
         });
     }
 }
