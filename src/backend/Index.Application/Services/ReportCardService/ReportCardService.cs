@@ -38,9 +38,9 @@ public class ReportCardService(IndexDbContext indexDbContext, ISubjectService su
             .ThenInclude(rcs => rcs.Subject)
             .Select(
                 rc => rc.ReportCardSubjects
-                    .Where(rcs => rcs.Grade != null && (int)rcs.Grade > 0)
+                    .Where(rcs => (int)rcs.Grade > 0)
                     .Select(
-                        rcs => new Tuple<Grade, double>((Grade)rcs.Grade!, rcs.Subject.Credit)
+                        rcs => new Tuple<Grade, double>(rcs.Grade, rcs.Subject.Credit)
                     )
                     .ToList()
             )
