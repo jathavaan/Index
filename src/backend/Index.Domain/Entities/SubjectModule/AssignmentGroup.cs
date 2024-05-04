@@ -7,6 +7,7 @@ public class AssignmentGroup
     public DateTime DateCreated { get; set; }
     public DateTime? DateModified { get; set; }
     public int TotalAssignments { get; set; }
+    public int AssignmentsRequired { get; set; }
     public string UserProfileId { get; set; } = null!;
 
     public virtual UserProfile UserProfile { get; set; } = null!;

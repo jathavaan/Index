@@ -42,7 +42,7 @@ namespace Index.Presistence.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 5, 4, 16, 12, 3, 711, DateTimeKind.Local).AddTicks(1303));
+                        .HasDefaultValue(new DateTime(2024, 5, 5, 0, 9, 50, 707, DateTimeKind.Local).AddTicks(8385));
 
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime2");
@@ -73,10 +73,13 @@ namespace Index.Presistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AssignmentsRequired")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 5, 4, 16, 12, 3, 711, DateTimeKind.Local).AddTicks(5029));
+                        .HasDefaultValue(new DateTime(2024, 5, 5, 0, 9, 50, 708, DateTimeKind.Local).AddTicks(2079));
 
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime2");
@@ -113,7 +116,7 @@ namespace Index.Presistence.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 5, 4, 16, 12, 3, 712, DateTimeKind.Local).AddTicks(7150));
+                        .HasDefaultValue(new DateTime(2024, 5, 5, 0, 9, 50, 709, DateTimeKind.Local).AddTicks(493));
 
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime2");
