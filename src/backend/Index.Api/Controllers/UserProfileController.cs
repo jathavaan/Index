@@ -5,6 +5,13 @@
 [ApiController]
 public class UserProfileController(IMediator mediator) : IndexControllerBase(mediator)
 {
+    [HttpGet("GetByEmail/{email}")]
+    [Produces("application/json")]
+    [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
+    [ActionName(nameof(GetUserProfileByEmail))]
+    public async Task<ActionResult<UserProfileVm>> GetUserProfileByEmail(string email)
+        => await SendRequest<UserProfileVm, GetUserProfileByEmailQuery>(new GetUserProfileByEmailQuery(email));
+
     [HttpPost]
     [Produces("application/json", Type = typeof(UserProfileVm))]
     [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]

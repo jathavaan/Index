@@ -18,8 +18,4 @@
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="Features\UserProfile\Query\"/>
-    </ItemGroup>
-
 </Project>
