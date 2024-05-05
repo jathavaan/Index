@@ -29,6 +29,7 @@ public class UserProfileService : IUserProfileService
 
         return new UserProfileVm
         {
+            Id = userProfile.Id,
             FirstName = userProfile.FirstName,
             Surname = userProfile.Surname,
             Email = userProfile.Email,
@@ -41,6 +42,7 @@ public class UserProfileService : IUserProfileService
             .Where(x => x.Id == idOrEmail || x.Email == idOrEmail)
             .Select(x => new UserProfileVm
             {
+                Id = x.Id,
                 Email = x.Email,
                 FirstName = x.FirstName,
                 Surname = x.Surname,

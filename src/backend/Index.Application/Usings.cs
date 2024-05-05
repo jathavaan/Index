@@ -1,6 +1,7 @@
 ﻿global using MediatR;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
 global using FluentValidation;
 global using Microsoft.EntityFrameworkCore;
 global using Index.Application.Common;
@@ -8,6 +9,7 @@ global using Index.Application.Middleware;
 global using Index.Presistence.Context;
 global using Index.Domain.Enums;
 global using Index.Domain.Entities.SubjectModule;
+global using Index.Application.Services.AssignmentGroupService;
 global using Index.Application.Services.UserProfileService;
 global using Index.Application.Services.ReportCardService;
 global using Index.Application.Services.SubjectService;
