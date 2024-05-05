@@ -1,7 +1,8 @@
 ﻿namespace Index.Application.Features.Subject.Query.GetSubjectBySubjectCode;
 
-public class GetSubjectBySubjectCodeQueryHandler(ISubjectService subjectService)
-    : IRequestHandler<GetSubjectBySubjectCodeQuery, Response<SubjectVm>>
+public class GetSubjectBySubjectCodeQueryHandler(
+    ISubjectService subjectService
+) : IRequestHandler<GetSubjectBySubjectCodeQuery, Response<SubjectVm>>
 {
     public async Task<Response<SubjectVm>> Handle(GetSubjectBySubjectCodeQuery request,
         CancellationToken cancellationToken)
