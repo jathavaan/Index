@@ -1,4 +1,4 @@
-﻿namespace Index.Application.Features.AssignmentGroup.Command.DeleteAssignmentGroup;
+﻿namespace Index.Application.Features.Assignment.Command.DeleteAssignmentGroup;
 
 public class DeleteAssignmentGroupCommandHandler(
     IAssignmentGroupSerivce assignmentGroupSerivce

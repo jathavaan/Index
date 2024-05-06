@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.BearerToken;
-
-namespace Index.Application.Features.AssignmentGroup.Command.EditAssignmentGroup;
+﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentGroup;
 
 public class EditAssignmentGroupCommandValidator : AbstractValidator<EditAssignmentGroupCommand>
 {

@@ -9,7 +9,8 @@ public static class ApplicationServiceRegistration
         services.AddTransient<IUserProfileService, UserProfileService>();
         services.AddTransient<ISubjectService, SubjectService>();
         services.AddTransient<IReportCardService, ReportCardService>();
-        services.AddTransient<IAssignmentGroupSerivce,AssignmentGroupService>();
+        services.AddTransient<IAssignmentService, AssignmentService>();
+        services.AddTransient<IAssignmentGroupSerivce, AssignmentGroupService>();
 
         // Hosted services
 

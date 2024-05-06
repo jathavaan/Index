@@ -1,4 +1,4 @@
-﻿namespace Index.Application.Features.AssignmentGroup.Command.CreateAssignmentGroup;
+﻿namespace Index.Application.Features.Assignment.Command.CreateAssignmentGroup;
 
 public class CreateAssignmentGroupCommandValidator : AbstractValidator<CreateAssignmentGroupCommand>
 {
