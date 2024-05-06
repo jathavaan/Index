@@ -7,6 +7,6 @@ public class AssignmentGroupVm
     public string SubjectName { get; set; } = null!;
     public int TotalAssignments { get; set; }
     public int AssignmentsRequired { get; set; }
-    public int AssignmentsCompleted { get; set; }
+    public int AssignmentsSubmitted { get; set; }
     public List<AssignmentVm> Assignments { get; set; } = [];
 }

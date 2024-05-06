@@ -8,4 +8,5 @@ public interface IAssignmentService
     public Task<bool> RenameAssignment(int id, string name);
     public Task<bool> UpdateLastModifiedDate(int id);
     public Task<AssignmentVm?> UpdateAssignmentPriority(int id, AssignmentPriority priority);
+    public Task<AssignmentVm?> UpdateAssignmentStatus(int id, AssignmentStatus status);
 }

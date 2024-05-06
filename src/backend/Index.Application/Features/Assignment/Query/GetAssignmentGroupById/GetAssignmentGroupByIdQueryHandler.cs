@@ -25,8 +25,8 @@ public class GetAssignmentGroupByIdQueryHandler(
             SubjectName = assignmentGroup.Subject.Name,
             TotalAssignments = assignmentGroup.TotalAssignments,
             AssignmentsRequired = assignmentGroup.AssignmentsRequired,
-            AssignmentsCompleted = assignmentGroup.Assignments
-                .Count(x => x.Status == AssignmentStatus.Completed),
+            AssignmentsSubmitted = assignmentGroup.Assignments
+                .Count(x => x.Status == AssignmentStatus.Submitted),
             Assignments = assignmentGroup.Assignments.Select(a => new AssignmentVm
                 {
                     Id = a.Id,
