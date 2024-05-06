@@ -67,4 +67,28 @@ public class AssignmentService(IndexDbContext indexDbContext) : IAssignmentServi
                 return false;
         }
     }
+
+    public async Task<AssignmentVm?> UpdateAssignmentPriority(int id, AssignmentPriority priority)
+    {
+        var assignment = await indexDbContext.Assignments
+            .Where(x => x.Id == id)
+            .FirstOrDefaultAsync();
+
+        if (assignment is null) return null;
+
+        assignment.Priority = priority;
+        indexDbContext.Assignments.Update(assignment);
+        await indexDbContext.SaveChangesAsync();
+        await UpdateLastModifiedDate(assignment.Id);
+
+        return new AssignmentVm
+        {
+            Id = assignment.Id,
+            Name = assignment.Name,
+            Priority = assignment.Priority,
+            Status = assignment.Status,
+            StartDate = assignment.StartDate,
+            DueDate = assignment.DueDate
+        };
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using Index.Application.Services.AssignmentService.Dtos;
+using Index.Domain.Enums;
 
 namespace Index.Api.Controllers;
 
@@ -20,6 +21,14 @@ public class AssignmentController(IMediator mediator) : IndexControllerBase(medi
     [ActionName(nameof(CreateAssignment))]
     public async Task<ActionResult<bool>> CreateAssignment(CreateAssignmentDto dto)
         => await SendCommand<bool, CreateAssignmentCommand>(new CreateAssignmentCommand(dto));
+
+    [HttpPatch("Edit/Priority/{assignmentId:int}/{priority}")]
+    [Produces("application/json", Type = typeof(AssignmentVm))]
+    [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
+    [ActionName(nameof(EditAssignmentPriority))]
+    public async Task<ActionResult<AssignmentVm>> EditAssignmentPriority(int assignmentId, AssignmentPriority priority)
+        => await SendCommand<AssignmentVm, EditAssignmentPriorityCommand>(
+            new EditAssignmentPriorityCommand(assignmentId, priority));
 
     [HttpDelete("Delete/{assignmentId:int}")]
     [Produces("application/json", Type = typeof(bool))]
