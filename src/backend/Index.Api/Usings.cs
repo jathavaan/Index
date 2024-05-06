@@ -17,6 +17,7 @@ global using Index.Application.Features.Assignment.Command.DeleteAssignment;
 global using Index.Application.Features.Assignment.Command.CreateAssignmentGroup;
 global using Index.Application.Features.Assignment.Command.DeleteAssignmentGroup;
 global using Index.Application.Features.Assignment.Command.EditAssignmentGroup;
+global using Index.Application.Features.Assignment.Command.EditAssignmentPriority;
 global using Index.Application.Features.Assignment.Query.GetAssignmentGroupById;
 global using Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;
 global using Index.Application.Features.UserProfile.Query.GetUserProfileByEmailQuery;
