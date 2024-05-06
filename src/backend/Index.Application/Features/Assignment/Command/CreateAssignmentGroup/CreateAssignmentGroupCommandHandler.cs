@@ -1,4 +1,4 @@
-﻿namespace Index.Application.Features.AssignmentGroup.Command.CreateAssignmentGroup;
+﻿namespace Index.Application.Features.Assignment.Command.CreateAssignmentGroup;
 
 public class CreateAssignmentGroupCommandHandler(IAssignmentGroupSerivce assignmentGroupSerivce)
     : IRequestHandler<CreateAssignmentGroupCommand, CommandResponse<bool>>

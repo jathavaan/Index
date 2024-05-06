@@ -9,6 +9,8 @@ global using Index.Application.Middleware;
 global using Index.Presistence.Context;
 global using Index.Domain.Enums;
 global using Index.Domain.Entities.SubjectModule;
+global using Index.Application.Services.AssignmentService;
+global using Index.Application.Services.AssignmentService.Dtos;
 global using Index.Application.Services.AssignmentGroupService;
 global using Index.Application.Services.UserProfileService;
 global using Index.Application.Services.ReportCardService;

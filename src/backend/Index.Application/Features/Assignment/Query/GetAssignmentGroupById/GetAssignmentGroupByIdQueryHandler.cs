@@ -1,4 +1,4 @@
-﻿namespace Index.Application.Features.AssignmentGroup.Query.GetAssignmentGroupById;
+﻿namespace Index.Application.Features.Assignment.Query.GetAssignmentGroupById;
 
 public class GetAssignmentGroupByIdQueryHandler(
     IAssignmentGroupSerivce assignmentGroupSerivce
@@ -26,13 +26,13 @@ public class GetAssignmentGroupByIdQueryHandler(
             TotalAssignments = assignmentGroup.TotalAssignments,
             AssignmentsRequired = assignmentGroup.AssignmentsRequired,
             AssignmentsCompleted = assignmentGroup.Assignments
-                .Count(x => x.AssignmentStatus == AssignmentStatus.Completed),
+                .Count(x => x.Status == AssignmentStatus.Completed),
             Assignments = assignmentGroup.Assignments.Select(a => new AssignmentVm
                 {
                     Id = a.Id,
                     Name = a.Name,
-                    Priority = a.AssignmentPriority,
-                    Status = a.AssignmentStatus,
+                    Priority = a.Priority,
+                    Status = a.Status,
                     StartDate = a.StartDate,
                     DueDate = a.DueDate
                 })

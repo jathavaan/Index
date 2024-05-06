@@ -1,4 +1,4 @@
-﻿namespace Index.Application.Features.AssignmentGroup.Command.EditAssignmentGroup;
+﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentGroup;
 
 public class EditAssignmentGroupCommand(int id) : Command<CommandResponse<bool>>
 {
