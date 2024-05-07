@@ -10,5 +10,6 @@ public class UserProfile
     public UserProfileAccessLevel AccessLevel { get; set; }
 
     public virtual ICollection<ReportCard> ReportCards { get; set; } = new List<ReportCard>();
+    public virtual ICollection<StudyPlan> StudyPlans { get; set; } = new List<StudyPlan>();
     public virtual ICollection<AssignmentGroup> AssignmentGroups { get; set; } = new List<AssignmentGroup>();
 }
