@@ -21,6 +21,9 @@ global using Index.Application.Features.Assignment.Command.DeleteAssignmentGroup
 global using Index.Application.Features.Assignment.Command.EditAssignmentGroup;
 global using Index.Application.Features.Assignment.Command.EditAssignmentPriority;
 global using Index.Application.Features.Assignment.Command.EditAssignmentStatus;
+global using Index.Application.Features.Assignment.Command.EditAssignmentName;
+global using Index.Application.Features.Assignment.Command.EditAssignmentStartDate;
+global using Index.Application.Features.Assignment.Command.EditAssignmentDueDate;
 global using Index.Application.Features.Assignment.Query.GetAssignmentGroupById;
 global using Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;
 global using Index.Application.Features.UserProfile.Query.GetUserProfileByEmailQuery;

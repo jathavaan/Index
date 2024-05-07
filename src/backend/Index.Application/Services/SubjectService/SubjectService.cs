@@ -2,13 +2,18 @@
 
 namespace Index.Application.Services.SubjectService;
 
-public class SubjectService(IndexDbContext indexDbContext) : ISubjectService
+public class SubjectService : ISubjectService
 {
+    private readonly IndexDbContext _context;
+
+    public SubjectService(IndexDbContext context)
+        => _context = context;
+
     public async Task<List<Subject>> GetAllSubjects()
-        => await indexDbContext.Subjects.ToListAsync();
+        => await _context.Subjects.ToListAsync();
 
     public async Task<Subject?> GetSubject(string subjectCode)
-        => await indexDbContext.Subjects
+        => await _context.Subjects
             .Where(x => x.SubjectCode == subjectCode)
             .FirstOrDefaultAsync();
 
@@ -24,8 +29,8 @@ public class SubjectService(IndexDbContext indexDbContext) : ISubjectService
             Credits = credit
         };
 
-        indexDbContext.Subjects.Add(subject);
-        await indexDbContext.SaveChangesAsync();
+        _context.Subjects.Add(subject);
+        await _context.SaveChangesAsync();
 
         return true;
     }
@@ -40,8 +45,8 @@ public class SubjectService(IndexDbContext indexDbContext) : ISubjectService
         if (name is not null) subject.Name = name;
         if (credit is not null) subject.Credits = (double)credit!;
 
-        indexDbContext.Subjects.Update(subject);
-        await indexDbContext.SaveChangesAsync();
+        _context.Subjects.Update(subject);
+        await _context.SaveChangesAsync();
 
         return true;
     }
@@ -54,8 +59,8 @@ public class SubjectService(IndexDbContext indexDbContext) : ISubjectService
             return false;
         }
 
-        indexDbContext.Subjects.Remove(subject);
-        await indexDbContext.SaveChangesAsync();
+        _context.Subjects.Remove(subject);
+        await _context.SaveChangesAsync();
         return true;
     }
 }

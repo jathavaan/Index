@@ -7,10 +7,10 @@ namespace Index.Application.Services.UserProfileService;
 
 public class UserProfileService : IUserProfileService
 {
-    private readonly IndexDbContext _indexDbContext;
+    private readonly IndexDbContext _context;
 
-    public UserProfileService(IndexDbContext indexDbContext)
-        => _indexDbContext = indexDbContext;
+    public UserProfileService(IndexDbContext context)
+        => _context = context;
 
     public async Task<UserProfileVm> CreateUserProfile(CreateUserProfileCommandDto dto)
     {
@@ -24,8 +24,8 @@ public class UserProfileService : IUserProfileService
             AccessLevel = (UserProfileAccessLevel)dto.AccessLevel
         };
 
-        _indexDbContext.UserProfiles.Add(userProfile);
-        await _indexDbContext.SaveChangesAsync();
+        _context.UserProfiles.Add(userProfile);
+        await _context.SaveChangesAsync();
 
         return new UserProfileVm
         {
@@ -38,7 +38,7 @@ public class UserProfileService : IUserProfileService
     }
 
     public async Task<UserProfileVm?> GetUserProfileByIdOrEmail(string idOrEmail)
-        => await _indexDbContext.UserProfiles
+        => await _context.UserProfiles
             .Where(x => x.Id == idOrEmail || x.Email == idOrEmail)
             .Select(x => new UserProfileVm
             {
@@ -52,7 +52,7 @@ public class UserProfileService : IUserProfileService
 
     public async Task<bool> CheckUserCredentials(string email, string password)
     {
-        var userProfile = await _indexDbContext.UserProfiles
+        var userProfile = await _context.UserProfiles
             .Where(x => string.Equals(email, x.Email, StringComparison.OrdinalIgnoreCase))
             .FirstOrDefaultAsync();
 

@@ -19,6 +19,14 @@ public class AssignmentController(IMediator mediator) : IndexControllerBase(medi
     public async Task<ActionResult<bool>> CreateAssignment(CreateAssignmentDto dto)
         => await SendCommand<bool, CreateAssignmentCommand>(new CreateAssignmentCommand(dto));
 
+    [HttpPatch("Edit/Name/{assignmentId:int}/{name}")]
+    [Produces("application/json", Type = typeof(AssignmentVm))]
+    [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
+    [ActionName(nameof(EditAssignmentName))]
+    public async Task<ActionResult<AssignmentVm>> EditAssignmentName(int assignmentId, string name)
+        => await SendCommand<AssignmentVm, EditAssignmentNameCommand>(
+            new EditAssignmentNameCommand(assignmentId, name));
+
     [HttpPatch("Edit/Priority/{assignmentId:int}/{priority}")]
     [Produces("application/json", Type = typeof(AssignmentVm))]
     [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
@@ -34,6 +42,22 @@ public class AssignmentController(IMediator mediator) : IndexControllerBase(medi
     public async Task<ActionResult<AssignmentVm>> EditAssignmentStatus(int assignmentId, AssignmentStatus status)
         => await SendCommand<AssignmentVm, EditAssignmentStatusCommand>(
             new EditAssignmentStatusCommand(assignmentId, status));
+
+    [HttpPatch("Edit/StartDate/{assignmentId:int}/{startDate}")]
+    [Produces("application/json", Type = typeof(AssignmentVm))]
+    [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
+    [ActionName(nameof(EditAssignmentStartDate))]
+    public async Task<ActionResult<AssignmentVm>> EditAssignmentStartDate(int assignmentId, DateTime startDate)
+        => await SendCommand<AssignmentVm, EditAssignmentStartDateCommand>(
+            new EditAssignmentStartDateCommand(assignmentId, startDate));
+
+    [HttpPatch("Edit/DueDate/{assignmentId:int}/{dueDate}")]
+    [Produces("application/json", Type = typeof(AssignmentVm))]
+    [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
+    [ActionName(nameof(EditAssignmentDueDate))]
+    public async Task<ActionResult<AssignmentVm>> EditAssignmentDueDate(int assignmentId, DateTime dueDate)
+        => await SendCommand<AssignmentVm, EditAssignmentDueDateCommand>(
+            new EditAssignmentDueDateCommand(assignmentId, dueDate));
 
     [HttpDelete("Delete/{assignmentId:int}")]
     [Produces("application/json", Type = typeof(bool))]
