@@ -2,3 +2,55 @@
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- none
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  solution: '../**/src/backend/Index.sln'
+  project: '../**/src/backend/Index.csproj'
+
+
+steps:
+- task: NuGetToolInstaller@1
+  name: 'NuGetToolInstaller'
+  displayName: 'NuGet Tool Installer'
+
+- task: NuGetCommand@2
+  name: 'NuGetRestore'
+  displayName: 'NuGet Restore Packages'
+  inputs:
+    command: 'restore'
+    restoreSolution: '$(solution)'
+    feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  name: 'UnitTests'
+  displayName: 'Run Unit Tests'
+  inputs:
+    command: 'test'
+    projects: '$(solution)'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  name: 'Publish'
+  displayName: 'Publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '$(project)'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: false
+
+- task: PublishBuildArtifacts@1
+  name: 'PublishBuildArtifacts'
+  displayName: 'Publish Build Artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'Index API'
+    publishLocation: 'Container'
