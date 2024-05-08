@@ -9,6 +9,9 @@ public partial class IndexDbContext(DbContextOptions<IndexDbContext> options) : 
     public virtual DbSet<ReportCardSubject> ReportCardSubjects { get; set; }
     public virtual DbSet<AssignmentGroup> AssignmentGroups { get; set; }
     public virtual DbSet<Assignment> Assignments { get; set; }
+    public virtual DbSet<StudyPlan> StudyPlans { get; set; }
+    public virtual DbSet<StudyPlanRestriction> StudyPlanRestrictions { get; set; }
+    public virtual DbSet<StudyPlanSubject> StudyPlanSubjects { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

@@ -1,6 +1,6 @@
 ﻿namespace Index.Presistence.Configurations.SubjectModule;
 
-public class ReportCardSubjectConfiguration : IEntityTypeConfiguration<ReportCardSubject>
+internal class ReportCardSubjectConfiguration : IEntityTypeConfiguration<ReportCardSubject>
 {
     public void Configure(EntityTypeBuilder<ReportCardSubject> builder)
     {

@@ -1,6 +1,6 @@
 ﻿namespace Index.Presistence.Configurations.SubjectModule;
 
-public class AssignmentGroupConfiguration : IEntityTypeConfiguration<AssignmentGroup>
+internal class AssignmentGroupConfiguration : IEntityTypeConfiguration<AssignmentGroup>
 {
     public void Configure(EntityTypeBuilder<AssignmentGroup> builder)
     {

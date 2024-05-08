@@ -4,6 +4,7 @@ using Index.Presistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Index.Presistence.Migrations
 {
     [DbContext(typeof(IndexDbContext))]
-    partial class IndexDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240508203226_AddStudyPlanEntites")]
+    partial class AddStudyPlanEntites
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +39,7 @@ namespace Index.Presistence.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 5, 8, 22, 45, 31, 619, DateTimeKind.Local).AddTicks(9301));
+                        .HasDefaultValue(new DateTime(2024, 5, 8, 22, 32, 25, 977, DateTimeKind.Local).AddTicks(6853));
 
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime2");
@@ -79,7 +82,7 @@ namespace Index.Presistence.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 5, 8, 22, 45, 31, 620, DateTimeKind.Local).AddTicks(3211));
+                        .HasDefaultValue(new DateTime(2024, 5, 8, 22, 32, 25, 978, DateTimeKind.Local).AddTicks(1992));
 
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime2");
@@ -116,7 +119,7 @@ namespace Index.Presistence.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 5, 8, 22, 45, 31, 621, DateTimeKind.Local).AddTicks(2890));
+                        .HasDefaultValue(new DateTime(2024, 5, 8, 22, 32, 25, 979, DateTimeKind.Local).AddTicks(3447));
 
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime2");
@@ -214,7 +217,7 @@ namespace Index.Presistence.Migrations
 
                     b.HasIndex("StudyPlanId");
 
-                    b.ToTable("StudyPlanRestrictions", "sub");
+                    b.ToTable("StudyPlanRestriction", "sub");
                 });
 
             modelBuilder.Entity("Index.Domain.Entities.SubjectModule.StudyPlanSubject", b =>
