@@ -1,6 +1,6 @@
 ﻿namespace Index.Presistence.Configurations.SubjectModule;
 
-public class SubjectConfiguration : IEntityTypeConfiguration<Subject>
+internal class SubjectConfiguration : IEntityTypeConfiguration<Subject>
 {
     public void Configure(EntityTypeBuilder<Subject> builder)
     {
@@ -22,6 +22,12 @@ public class SubjectConfiguration : IEntityTypeConfiguration<Subject>
             .WithOne(x => x.Subject)
             .HasForeignKey(x => x.SubjectCode)
             .HasPrincipalKey(x => x.SubjectCode)
-            .IsRequired();
+            .OnDelete(DeleteBehavior.ClientCascade);
+
+        builder.HasMany(p => p.StudyPlanSubjects)
+            .WithOne(d => d.Subject)
+            .HasPrincipalKey(p => p.SubjectCode)
+            .HasForeignKey(d => d.SubjectCode)
+            .OnDelete(DeleteBehavior.ClientCascade);
     }
 }
