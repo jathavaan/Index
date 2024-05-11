@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Assignment.Command.CreateAssignment;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Assignment.Command.CreateAssignment;
 
 public class CreateAssignmentCommandHandler(
     IAssignmentService assignmentService

@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Assignment.Query.GetAssignmentById;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Assignment.Query.GetAssignmentById;
 
 public class GetAssignmentByIdQueryHandler(
     IAssignmentService assignmentService

@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.ReportCard.Query.GetReportCardById;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.ReportCard.Query.GetReportCardById;
 
 public class GetReportCardByIdQueryHandler(IReportCardService reportCardService)
     : IRequestHandler<GetReportCardByIdQuery, Response<ReportCardVm>>

@@ -1,4 +1,5 @@
-﻿namespace Index.Application.Services.AssignmentGroupService;
+﻿
+namespace Index.Infrastructure.Services.SubjectModule;
 
 public class AssignmentGroupService : IAssignmentGroupSerivce
 {

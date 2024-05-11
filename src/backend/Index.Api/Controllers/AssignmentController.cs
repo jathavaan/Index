@@ -1,4 +1,6 @@
-﻿namespace Index.Api.Controllers;
+﻿using Index.Application.Contracts.SubjectModule.Dtos;
+
+namespace Index.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiConventionType(typeof(SwaggerApiConvention))]

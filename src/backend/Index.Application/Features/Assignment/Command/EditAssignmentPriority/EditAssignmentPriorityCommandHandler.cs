@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentPriority;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Assignment.Command.EditAssignmentPriority;
 
 public class EditAssignmentPriorityCommandHandler(
     IAssignmentService assignmentService

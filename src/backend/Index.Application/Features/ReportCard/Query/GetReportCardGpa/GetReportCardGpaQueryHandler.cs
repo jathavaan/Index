@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.ReportCard.Query.GetReportCardGpa;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.ReportCard.Query.GetReportCardGpa;
 
 public class GetReportCardGpaQueryHandler(IReportCardService reportCardService)
     : IRequestHandler<GetReportCardGpaQuery, Response<double>>

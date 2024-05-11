@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentDueDate;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Assignment.Command.EditAssignmentDueDate;
 
 public class EditAssignmentDueDateCommandHandler(
     IAssignmentService assignmentService

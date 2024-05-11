@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.ReportCard.Command.AddSubjectToReportCard;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.ReportCard.Command.AddSubjectToReportCard;
 
 public class AddSubjectToReportCardCommandHandler(IReportCardService reportcardService)
     : IRequestHandler<AddSubjectToReportCardCommand, CommandResponse<bool>>

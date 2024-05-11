@@ -1,22 +1,7 @@
-namespace Index.Application;
+﻿namespace Index.Application;
 
 public static class ApplicationServiceRegistration
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services,
-        IConfiguration configuration)
-    {
-        // Transient services
-        services.AddTransient<IUserProfileService, UserProfileService>();
-        services.AddTransient<ISubjectService, SubjectService>();
-        services.AddTransient<IReportCardService, ReportCardService>();
-        services.AddTransient<IAssignmentService, AssignmentService>();
-        services.AddTransient<IAssignmentGroupSerivce, AssignmentGroupService>();
-
-        // Hosted services
-
-        return services;
-    }
-
     public static IServiceCollection AddMediatR(this IServiceCollection services)
     {
         var assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();

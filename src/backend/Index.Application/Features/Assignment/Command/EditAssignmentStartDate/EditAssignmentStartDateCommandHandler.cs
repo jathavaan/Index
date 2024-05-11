@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentStartDate;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Assignment.Command.EditAssignmentStartDate;
 
 public class EditAssignmentStartDateCommandHandler(
     IAssignmentService assignmentService

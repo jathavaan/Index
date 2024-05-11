@@ -1,4 +1,4 @@
-﻿using Index.Application.Services.UserProfileService;
+﻿using Index.Application.Contracts.UserProfileModule;
 using Index.Application.ViewModels;
 
 namespace Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;

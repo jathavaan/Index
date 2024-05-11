@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Subject.Command.EditSubject;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Subject.Command.EditSubject;
 
 public class EditSubjectCommandHandler(ISubjectService subjectService)
     : IRequestHandler<EditSubjectCommand, CommandResponse<bool>>

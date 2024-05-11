@@ -1,4 +1,5 @@
-﻿using Index.Application.Features.Subject.Command.CreateSubject;
+﻿using Index.Application.Contracts.SubjectModule;
+using Index.Application.Features.Subject.Command.CreateSubject;
 
 namespace Index.Application.Features.Subject.Command.DeleteSubject;
 

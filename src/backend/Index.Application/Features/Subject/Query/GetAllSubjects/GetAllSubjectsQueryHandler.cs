@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Subject.Query.GetAllSubjects;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Subject.Query.GetAllSubjects;
 
 public class GetAllSubjectsQueryHandler(ISubjectService subjectService)
     : IRequestHandler<GetAllSubjectsQuery, Response<List<SubjectVm>>>

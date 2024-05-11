@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Services.AssignmentService;
+﻿using Index.Application.Contracts.SubjectModule.Dtos;
+
+namespace Index.Application.Contracts.SubjectModule;
 
 public interface IAssignmentService
 {

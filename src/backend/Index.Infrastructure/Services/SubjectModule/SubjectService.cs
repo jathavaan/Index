@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Index.Application.Contracts.SubjectModule;
 
-namespace Index.Application.Services.SubjectService;
+namespace Index.Infrastructure.Services.SubjectModule;
 
 public class SubjectService : ISubjectService
 {

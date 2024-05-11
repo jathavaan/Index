@@ -1,4 +1,4 @@
-﻿namespace Index.Application.Services.SubjectService;
+﻿namespace Index.Application.Contracts.SubjectModule;
 
 public interface ISubjectService
 {

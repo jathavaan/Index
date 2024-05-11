@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Assignment.Command.CreateAssignmentGroup;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Assignment.Command.CreateAssignmentGroup;
 
 public class CreateAssignmentGroupCommandHandler(IAssignmentGroupSerivce assignmentGroupSerivce)
     : IRequestHandler<CreateAssignmentGroupCommand, CommandResponse<bool>>

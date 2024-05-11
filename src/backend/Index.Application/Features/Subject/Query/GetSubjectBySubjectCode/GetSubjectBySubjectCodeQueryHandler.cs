@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Subject.Query.GetSubjectBySubjectCode;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Subject.Query.GetSubjectBySubjectCode;
 
 public class GetSubjectBySubjectCodeQueryHandler(
     ISubjectService subjectService
