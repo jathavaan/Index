@@ -25,11 +25,13 @@ public abstract class IndexControllerBase(IMediator mediator) : ControllerBase
     }
 
     private ActionResult GetErrorResult(Response result)
-        => result.ErrorCode switch
+    {
+        return result.ErrorCode switch
         {
             IndexErrorCode.AlreadyExists => Problem(result.Error),
             IndexErrorCode.Forbidden => Forbid(result.Error!),
             IndexErrorCode.NotFound => NotFound(result.Error),
             _ => Problem(result.Error)
         };
+    }
 }

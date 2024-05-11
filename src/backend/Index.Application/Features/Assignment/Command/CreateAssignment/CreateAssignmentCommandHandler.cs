@@ -1,6 +1,4 @@
-﻿using Index.Application.Contracts.SubjectModule;
-
-namespace Index.Application.Features.Assignment.Command.CreateAssignment;
+﻿namespace Index.Application.Features.Assignment.Command.CreateAssignment;
 
 public class CreateAssignmentCommandHandler(
     IAssignmentService assignmentService
@@ -8,8 +6,10 @@ public class CreateAssignmentCommandHandler(
 {
     public async Task<CommandResponse<bool>> Handle(CreateAssignmentCommand request,
         CancellationToken cancellationToken)
-        => new()
+    {
+        return new CommandResponse<bool>
         {
             Result = await assignmentService.CreateAssignment(request.Dto)
         };
+    }
 }

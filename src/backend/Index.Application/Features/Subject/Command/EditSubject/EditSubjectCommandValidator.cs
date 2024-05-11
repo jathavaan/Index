@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace Index.Application.Features.Subject.Command.EditSubject;
+﻿namespace Index.Application.Features.Subject.Command.EditSubject;
 
 public class EditSubjectCommandValidator : AbstractValidator<EditSubjectCommand>
 {

@@ -1,6 +1,4 @@
-﻿using Index.Application.Contracts.UserProfileModule;
-
-namespace Index.Application.Features.UserProfile.Query.GetUserProfileByEmailQuery;
+﻿namespace Index.Application.Features.UserProfile.Query.GetUserProfileByEmailQuery;
 
 public class GetUserProfileByEmailQueryHandler(
     IUserProfileService userProfileService
@@ -9,18 +7,16 @@ public class GetUserProfileByEmailQueryHandler(
     public async Task<Response<UserProfileVm>> Handle(GetUserProfileByEmailQuery request,
         CancellationToken cancellationToken)
     {
-        var userProfile = await userProfileService.GetUserProfileByIdOrEmail(request.Email);
+        var userProfile = await userProfileService.GetUserProfileVmByIdOrEmail(request.Email);
 
         if (userProfile is null)
-        {
-            return new Response<UserProfileVm>()
+            return new Response<UserProfileVm>
             {
                 ErrorCode = IndexErrorCode.NotFound,
                 Error = $"User profile not found for the following email {request.Email}"
             };
-        }
 
-        return new Response<UserProfileVm>()
+        return new Response<UserProfileVm>
         {
             Result = new UserProfileVm
             {

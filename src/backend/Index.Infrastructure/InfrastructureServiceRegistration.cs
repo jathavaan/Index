@@ -16,6 +16,4 @@ public static class InfrastructureServiceRegistration
 
         return services;
     }
-
-
 }

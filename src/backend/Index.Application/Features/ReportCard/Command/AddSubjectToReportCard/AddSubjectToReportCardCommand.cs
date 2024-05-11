@@ -1,10 +1,16 @@
 ﻿namespace Index.Application.Features.ReportCard.Command.AddSubjectToReportCard;
 
-public class AddSubjectToReportCardCommand(string subjectCode, int reportCardId, int year, int semester, int grade) : Command<CommandResponse<bool>>
+public class AddSubjectToReportCardCommand(
+    string subjectCode,
+    int reportCardId,
+    int year,
+    Semester semester,
+    Grade grade
+) : Command<CommandResponse<bool>>
 {
-    public string SubjectCode = subjectCode;
     public int ReportCardId = reportCardId;
+    public string SubjectCode = subjectCode;
     public int Year = year;
-    public int Semester = semester;
-    public int Grade = grade;
+    public Semester Semester = semester;
+    public Grade Grade = grade;
 }

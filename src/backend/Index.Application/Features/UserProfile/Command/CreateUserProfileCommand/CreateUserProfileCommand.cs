@@ -1,6 +1,4 @@
-﻿using Index.Application.ViewModels;
-
-namespace Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;
+﻿namespace Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;
 
 public class CreateUserProfileCommand(CreateUserProfileCommandDto dto) : Command<CommandResponse<UserProfileVm>>
 {

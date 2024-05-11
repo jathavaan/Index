@@ -12,13 +12,6 @@ public class ReportCardController(IMediator mediator) : IndexControllerBase(medi
     public async Task<ActionResult<ReportCardVm>> GetReportCardById(int reportCardId)
         => await SendRequest<ReportCardVm, GetReportCardByIdQuery>(new GetReportCardByIdQuery(reportCardId));
 
-    [HttpGet("get/{reportCardId}/gpa")]
-    [Produces("application/json", Type = typeof(double))]
-    [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
-    [ActionName(nameof(GetReportCardGpa))]
-    public async Task<ActionResult<double>> GetReportCardGpa(int reportCardId)
-        => await SendRequest<double, GetReportCardGpaQuery>(new GetReportCardGpaQuery(reportCardId));
-
     [HttpPost("create")]
     [Produces("application/json", Type = typeof(bool))]
     [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
@@ -31,7 +24,7 @@ public class ReportCardController(IMediator mediator) : IndexControllerBase(medi
     [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
     [ActionName(nameof(AddSubjectToReportCard))]
     public async Task<ActionResult<bool>> AddSubjectToReportCard(string subjectCode, int reportCardId, int year,
-        int semester, int grade = -2)
+        Semester semester, Grade grade)
         => await SendCommand<bool, AddSubjectToReportCardCommand>(
             new AddSubjectToReportCardCommand(subjectCode, reportCardId, year, semester, grade));
 

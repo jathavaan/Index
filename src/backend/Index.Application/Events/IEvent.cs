@@ -7,8 +7,10 @@ public interface IEvent : INotification
 
 public class Event : IEvent
 {
-    public string? CorrelationId { get; set; }
-
     public Event(string? correlationId)
-        => CorrelationId = correlationId;
+    {
+        CorrelationId = correlationId;
+    }
+
+    public string? CorrelationId { get; set; }
 }

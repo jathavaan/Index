@@ -97,5 +97,6 @@ public class AssignmentController(IMediator mediator) : IndexControllerBase(medi
     [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
     [ActionName(nameof(DeleteAssignmentGroup))]
     public async Task<ActionResult<bool>> DeleteAssignmentGroup(int assignmentGroupId)
-        => await SendCommand<bool, DeleteAssignmentGroupCommand>(new DeleteAssignmentGroupCommand(assignmentGroupId));
+        => await SendCommand<bool, DeleteAssignmentGroupCommand>(
+            new DeleteAssignmentGroupCommand(assignmentGroupId));
 }

@@ -1,17 +1,11 @@
-﻿using Index.Application.Contracts.SubjectModule;
-
-namespace Index.Infrastructure.Services.SubjectModule;
+﻿namespace Index.Infrastructure.Services.SubjectModule;
 
 public class ReportCardService : IReportCardService
 {
     private readonly IndexDbContext _context;
-    private readonly ISubjectService _subjectService;
 
-    public ReportCardService(IndexDbContext context, ISubjectService subjectService)
-    {
-        _context = context;
-        _subjectService = subjectService;
-    }
+    public ReportCardService(IndexDbContext context)
+        => _context = context;
 
     public async Task<bool> CreateReportCard(string name, string userProfileId)
     {
@@ -28,23 +22,25 @@ public class ReportCardService : IReportCardService
     }
 
     public async Task<ReportCard?> GetReportCard(int id)
-        => await _context.ReportCards
+    {
+        return await _context.ReportCards
             .Where(x => x.Id == id)
             .Include(x => x.ReportCardSubjects)
             .ThenInclude(x => x.Subject)
             .FirstOrDefaultAsync();
+    }
 
-    public async Task<List<ReportCard>> GetReportCardsByUserId(string id)
+    public async Task<List<ReportCard>> GetUserProfileReportCards(UserProfile userProfile)
         => await _context.ReportCards
-            .Where(x => x.UserProfileId == id)
+            .Where(x => x.UserProfileId == userProfile.Id)
             .OrderByDescending(x => x.DateCreated)
             .Include(x => x.ReportCardSubjects)
             .ThenInclude(x => x.Subject)
             .ToListAsync();
 
-    public async Task<double> GetReportCardGpa(int id)
+    public async Task<double> GetReportCardGpa(ReportCard reportCard)
         => await _context.ReportCards
-            .Where(rc => rc.Id == id)
+            .Where(rc => rc.Id == reportCard.Id)
             .Include(rc => rc.ReportCardSubjects)
             .ThenInclude(rcs => rcs.Subject)
             .Select(
@@ -58,64 +54,32 @@ public class ReportCardService : IReportCardService
             .Select(x => CalculateReportCardGpa(x))
             .FirstOrDefaultAsync();
 
-    public async Task<double> GetReportCardTotalCredits(int id)
-    {
-        var reportCard = await _context.ReportCards
-            .Where(rc => rc.Id == id)
-            .Include(rc => rc.ReportCardSubjects)
-            .ThenInclude(rcs => rcs.Subject)
-            .FirstOrDefaultAsync();
-
-        if (reportCard is null) throw new Exception($"Could not find a report card with id {id}");
-
-        return reportCard.ReportCardSubjects
+    public double GetReportCardTotalCredits(ReportCard reportCard)
+        => reportCard.ReportCardSubjects
             .Select(rcs => rcs.Subject)
             .Select(s => s.Credits)
             .Sum();
-    }
 
-
-    public async Task<bool> UpdateReportCardName(int id, string name)
+    public async Task<bool> UpdateReportCardName(ReportCard reportCard, string name)
     {
-        var reportCard = await GetReportCard(id);
-        if (reportCard is null) throw new Exception($"Could not find a report card with id {id}");
-
         reportCard.Name = name;
         _context.ReportCards.Update(reportCard);
         await _context.SaveChangesAsync();
         return true;
     }
 
-    public async Task<bool> DeleteReportCard(int id)
+    public async Task<bool> DeleteReportCard(ReportCard reportCard)
     {
-        var reportCard = await GetReportCard(id);
-        if (reportCard is null) throw new Exception($"Could not find a report card with id {id}");
-
         _context.ReportCardSubjects.RemoveRange(reportCard.ReportCardSubjects);
         _context.ReportCards.Remove(reportCard);
         await _context.SaveChangesAsync();
         return true;
     }
 
-    public async Task<bool> AddSubjectToReportCard(string subjectCode, int reportCardId, Grade grade, int year,
+    public async Task<bool> AddSubjectToReportCard(Subject subject, ReportCard reportCard, Grade grade, int year,
         Semester semester)
     {
-        var reportCard = await GetReportCard(reportCardId) ??
-                         throw new Exception($"Could not find a report card with id {reportCardId}");
-
-        if (reportCard.ReportCardSubjects.Any(x => x.Subject.SubjectCode == subjectCode))
-        {
-            return false;
-        }
-
-        var subject = await _subjectService.GetSubject(subjectCode) ??
-                      throw new Exception($"Could not find a subject with the id {subjectCode}");
-
-        if (reportCard.ReportCardSubjects.Any(x => x.Subject.SubjectCode == subject.SubjectCode))
-        {
-            throw new Exception(
-                $"{subject.SubjectCode} {subject.Name} has already been added to the report card with id {reportCard.Id}");
-        }
+        if (reportCard.ReportCardSubjects.Any(x => x.Subject.SubjectCode == subject.SubjectCode)) return false;
 
         ReportCardSubject reportCardSubject = new()
         {
@@ -131,12 +95,13 @@ public class ReportCardService : IReportCardService
         return true;
     }
 
-    public async Task<bool> RemoveSubjectFromReportCard(string subjectCode, int reportCardId)
+    public async Task<bool> RemoveSubjectFromReportCard(Subject subject, ReportCard reportCard)
     {
         var reportCardSubject = await _context.ReportCardSubjects
-            .Where(x => x.ReportCardId == reportCardId && x.SubjectCode == subjectCode)
-            .FirstOrDefaultAsync() ?? throw new Exception($"Subject has not been added to the report card");
+            .Where(x => x.ReportCardId == reportCard.Id && x.SubjectCode == subject.SubjectCode)
+            .FirstOrDefaultAsync();
 
+        if (reportCardSubject is null) return false;
         _context.ReportCardSubjects.Remove(reportCardSubject);
         await _context.SaveChangesAsync();
         return true;

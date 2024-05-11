@@ -26,7 +26,6 @@ global using Index.Application.Features.Assignment.Command.EditAssignmentDueDate
 global using Index.Application.Features.Assignment.Query.GetAssignmentGroupById;
 global using Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;
 global using Index.Application.Features.UserProfile.Query.GetUserProfileByEmailQuery;
-global using Index.Application.Features.ReportCard.Query.GetReportCardGpa;
 global using Index.Application.Features.ReportCard.Query.GetReportCardById;
 global using Index.Application.Features.ReportCard.Command.CreateReportCard;
 global using Index.Application.Features.ReportCard.Command.AddSubjectToReportCard;

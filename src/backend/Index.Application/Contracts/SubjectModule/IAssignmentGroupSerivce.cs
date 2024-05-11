@@ -3,13 +3,13 @@
 public interface IAssignmentGroupSerivce
 {
     public Task<AssignmentGroup?> GetAssignmentGroupById(int id);
-    public Task<List<AssignmentGroup>> GetAssignmentGroupsByUserProfileId(string userProfileId);
+    public Task<List<AssignmentGroup>> GetAssignmentGroupsByUserProfile(UserProfile userProfile);
 
-    public Task<bool> CreateAssignmentGroup(string subjectCode, int totalAssignments,
-        int assignmentsRequired, string userProfileId);
+    public Task<bool> CreateAssignmentGroup(Subject subject, int totalAssignments, int assignmentsRequired,
+        UserProfile userProfile);
 
-    public Task<bool> UpdateAssignmentGroup(int id, string? subjectCode, int? totalAssignments,
+    public Task<bool> UpdateAssignmentGroup(AssignmentGroup assignmentGroup, Subject? subjec, int? totalAssignments,
         int? assignmentsRequired);
 
-    public Task<bool> DeleteAssignmentGroup(int id);
+    public Task<bool> DeleteAssignmentGroup(AssignmentGroup assignmentGroup);
 }

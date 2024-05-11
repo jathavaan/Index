@@ -1,6 +1,6 @@
 namespace Index.Presistence.Context;
 
-public partial class IndexDbContext(DbContextOptions<IndexDbContext> options) : DbContext(options)
+public class IndexDbContext(DbContextOptions<IndexDbContext> options) : DbContext(options)
 {
     public virtual DbSet<UserProfile> UserProfiles { get; set; }
 

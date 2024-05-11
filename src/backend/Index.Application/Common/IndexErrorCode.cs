@@ -8,5 +8,5 @@ public enum IndexErrorCode
     Forbidden,
     NotFound,
     RequestValidationFailed,
-    Unknown,
+    Unknown
 }

@@ -1,6 +1,4 @@
-﻿using Index.Application.Contracts.SubjectModule;
-
-namespace Index.Application.Features.Subject.Query.GetSubjectBySubjectCode;
+﻿namespace Index.Application.Features.Subject.Query.GetSubjectBySubjectCode;
 
 public class GetSubjectBySubjectCodeQueryHandler(
     ISubjectService subjectService
@@ -11,13 +9,11 @@ public class GetSubjectBySubjectCodeQueryHandler(
     {
         var subject = await subjectService.GetSubject(request.SubjectCode);
         if (subject is null)
-        {
             return new Response<SubjectVm>
             {
                 ErrorCode = IndexErrorCode.NotFound,
                 Error = $"Could not find subject with subject code {request.SubjectCode}"
             };
-        }
 
         return new Response<SubjectVm>
         {

@@ -1,6 +1,4 @@
-﻿using Index.Application.Contracts.SubjectModule;
-
-namespace Index.Application.Features.Assignment.Query.GetAssignmentGroupById;
+﻿namespace Index.Application.Features.Assignment.Query.GetAssignmentGroupById;
 
 public class GetAssignmentGroupByIdQueryHandler(
     IAssignmentGroupSerivce assignmentGroupSerivce
@@ -12,13 +10,11 @@ public class GetAssignmentGroupByIdQueryHandler(
         var assignmentGroup = await assignmentGroupSerivce.GetAssignmentGroupById(request.Id);
 
         if (assignmentGroup is null)
-        {
-            return new Response<AssignmentGroupVm>()
+            return new Response<AssignmentGroupVm>
             {
                 ErrorCode = IndexErrorCode.NotFound,
                 Error = $"Could not find assignment group with id {request.Id}"
             };
-        }
 
         var result = new AssignmentGroupVm
         {
@@ -41,7 +37,7 @@ public class GetAssignmentGroupByIdQueryHandler(
                 .ToList()
         };
 
-        return new Response<AssignmentGroupVm>()
+        return new Response<AssignmentGroupVm>
         {
             Result = result
         };

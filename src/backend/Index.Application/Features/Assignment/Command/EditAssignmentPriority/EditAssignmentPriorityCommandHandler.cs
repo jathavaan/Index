@@ -1,6 +1,4 @@
-﻿using Index.Application.Contracts.SubjectModule;
-
-namespace Index.Application.Features.Assignment.Command.EditAssignmentPriority;
+﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentPriority;
 
 public class EditAssignmentPriorityCommandHandler(
     IAssignmentService assignmentService
@@ -9,17 +7,16 @@ public class EditAssignmentPriorityCommandHandler(
     public async Task<CommandResponse<AssignmentVm>> Handle(EditAssignmentPriorityCommand request,
         CancellationToken cancellationToken)
     {
-        var result = await assignmentService.UpdateAssignmentPriority(request.Id, request.Priority);
-        if (result is null)
-        {
-            return new CommandResponse<AssignmentVm>()
+        var assignment = await assignmentService.GetAssignment(request.Id);
+        if (assignment is null)
+            return new CommandResponse<AssignmentVm>
             {
                 ErrorCode = IndexErrorCode.NotFound,
-                Error = $"Could not find a assignment with the id {request.Id}"
+                Error = $"Assignment with id {request.Id} not found."
             };
-        }
 
-        return new CommandResponse<AssignmentVm>()
+        var result = await assignmentService.UpdateAssignmentPriority(assignment, request.Priority);
+        return new CommandResponse<AssignmentVm>
         {
             Result = result
         };
