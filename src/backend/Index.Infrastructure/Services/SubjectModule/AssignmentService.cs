@@ -1,6 +1,4 @@
-﻿
-
-using Index.Application.Contracts.SubjectModule.Dtos;
+﻿using Index.Application.Contracts.SubjectModule.Dtos;
 
 namespace Index.Infrastructure.Services.SubjectModule;
 
@@ -9,12 +7,16 @@ public class AssignmentService : IAssignmentService
     private readonly IndexDbContext _context;
 
     public AssignmentService(IndexDbContext context)
-        => _context = context;
+    {
+        _context = context;
+    }
 
     public async Task<Assignment?> GetAssignment(int id)
-        => await _context.Assignments
+    {
+        return await _context.Assignments
             .Where(x => x.Id == id)
             .FirstOrDefaultAsync();
+    }
 
     public async Task<bool> CreateAssignment(CreateAssignmentDto dto)
     {
@@ -33,29 +35,19 @@ public class AssignmentService : IAssignmentService
         return true;
     }
 
-    public async Task<bool> DeleteAssignment(int id)
+    public async Task<bool> DeleteAssignment(Assignment assignment)
     {
-        var assignment = await GetAssignment(id);
-        switch (assignment)
-        {
-            case not null:
-                _context.Assignments.Remove(assignment);
-                await _context.SaveChangesAsync();
-                return true;
-            case null:
-                return false;
-        }
+        _context.Assignments.Remove(assignment);
+        await _context.SaveChangesAsync();
+        return true;
     }
 
-    public async Task<AssignmentVm?> UpdateAssignmentName(int id, string name)
+    public async Task<AssignmentVm> UpdateAssignmentName(Assignment assignment, string name)
     {
-        var assignment = await GetAssignment(id);
-        if (assignment is null) return null;
-
         assignment.Name = name;
         _context.Assignments.Update(assignment);
         await _context.SaveChangesAsync();
-        await UpdateLastModifiedDate(id);
+        await UpdateLastModifiedDate(assignment);
 
         return new AssignmentVm
         {
@@ -68,30 +60,20 @@ public class AssignmentService : IAssignmentService
         };
     }
 
-    public async Task<bool> UpdateLastModifiedDate(int id)
+    public async Task<bool> UpdateLastModifiedDate(Assignment assignment)
     {
-        var assignment = await GetAssignment(id);
-        switch (assignment)
-        {
-            case not null:
-                assignment.DateModified = DateTime.Now;
-                _context.Assignments.Update(assignment);
-                await _context.SaveChangesAsync();
-                return true;
-            case null:
-                return false;
-        }
+        assignment.DateModified = DateTime.Now;
+        _context.Assignments.Update(assignment);
+        await _context.SaveChangesAsync();
+        return true;
     }
 
-    public async Task<AssignmentVm?> UpdateAssignmentPriority(int id, AssignmentPriority priority)
+    public async Task<AssignmentVm> UpdateAssignmentPriority(Assignment assignment, AssignmentPriority priority)
     {
-        var assignment = await GetAssignment(id);
-        if (assignment is null) return null;
-
         assignment.Priority = priority;
         _context.Assignments.Update(assignment);
         await _context.SaveChangesAsync();
-        await UpdateLastModifiedDate(assignment.Id);
+        await UpdateLastModifiedDate(assignment);
 
         return new AssignmentVm
         {
@@ -104,17 +86,14 @@ public class AssignmentService : IAssignmentService
         };
     }
 
-    public async Task<AssignmentVm?> UpdateAssignmentStatus(int id, AssignmentStatus status)
+    public async Task<AssignmentVm> UpdateAssignmentStatus(Assignment assignment, AssignmentStatus status)
     {
-        var assignment = await GetAssignment(id);
-        if (assignment is null) return null;
-
         assignment.Status = status;
         _context.Assignments.Update(assignment);
         await _context.SaveChangesAsync();
-        await UpdateLastModifiedDate(id);
+        await UpdateLastModifiedDate(assignment);
 
-        return new AssignmentVm()
+        return new AssignmentVm
         {
             Id = assignment.Id,
             Name = assignment.Name,
@@ -125,17 +104,14 @@ public class AssignmentService : IAssignmentService
         };
     }
 
-    public async Task<AssignmentVm?> UpdateAssignmentStartDate(int id, DateTime startDate)
+    public async Task<AssignmentVm> UpdateAssignmentStartDate(Assignment assignment, DateTime startDate)
     {
-        var assignment = await GetAssignment(id);
-        if (assignment is null) return null;
-
         assignment.StartDate = startDate;
         _context.Assignments.Update(assignment);
         await _context.SaveChangesAsync();
-        await UpdateLastModifiedDate(id);
+        await UpdateLastModifiedDate(assignment);
 
-        return new AssignmentVm()
+        return new AssignmentVm
         {
             Id = assignment.Id,
             Name = assignment.Name,
@@ -146,17 +122,14 @@ public class AssignmentService : IAssignmentService
         };
     }
 
-    public async Task<AssignmentVm?> UpdateAssignmentDueDate(int id, DateTime dueDate)
+    public async Task<AssignmentVm> UpdateAssignmentDueDate(Assignment assignment, DateTime dueDate)
     {
-        var assignment = await GetAssignment(id);
-        if (assignment is null) return null;
-
         assignment.DueDate = dueDate;
         _context.Assignments.Update(assignment);
         await _context.SaveChangesAsync();
-        await UpdateLastModifiedDate(id);
+        await UpdateLastModifiedDate(assignment);
 
-        return new AssignmentVm()
+        return new AssignmentVm
         {
             Id = assignment.Id,
             Name = assignment.Name,

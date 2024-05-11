@@ -4,14 +4,14 @@ public interface IReportCardService
 {
     public Task<bool> CreateReportCard(string name, string userProfileId);
     public Task<ReportCard?> GetReportCard(int id);
-    public Task<List<ReportCard>> GetReportCardsByUserId(string id);
-    public Task<double> GetReportCardGpa(int id);
-    public Task<double> GetReportCardTotalCredits(int id);
-    public Task<bool> UpdateReportCardName(int id, string name);
-    public Task<bool> DeleteReportCard(int id);
+    public Task<List<ReportCard>> GetUserProfileReportCards(UserProfile userProfile);
+    public Task<double> GetReportCardGpa(ReportCard reportCard);
+    public double GetReportCardTotalCredits(ReportCard reportCard);
+    public Task<bool> UpdateReportCardName(ReportCard reportCard, string name);
+    public Task<bool> DeleteReportCard(ReportCard reportCard);
 
-    public Task<bool> AddSubjectToReportCard(string subjectCode, int reportCardId, Grade grade, int year,
+    public Task<bool> AddSubjectToReportCard(Subject subject, ReportCard reportCard, Grade grade, int year,
         Semester semester);
 
-    public Task<bool> RemoveSubjectFromReportCard(string subjectCode, int reportCardId);
+    public Task<bool> RemoveSubjectFromReportCard(Subject subject, ReportCard reportCard);
 }

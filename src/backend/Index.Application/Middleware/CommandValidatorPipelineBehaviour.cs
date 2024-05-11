@@ -7,7 +7,9 @@ internal class CommandValidatorPipelineBehaviour<TRequest, TResponse> : IPipelin
     private readonly IEnumerable<IValidator<TRequest>> _validators;
 
     public CommandValidatorPipelineBehaviour(IEnumerable<IValidator<TRequest>> validators)
-        => _validators = validators;
+    {
+        _validators = validators;
+    }
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)

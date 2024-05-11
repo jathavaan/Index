@@ -4,7 +4,7 @@ public class AddSubjectToReportCardCommandValidator : AbstractValidator<AddSubje
 {
     public AddSubjectToReportCardCommandValidator()
     {
-        RuleFor(x => x.Grade)
+        RuleFor(x => (int)x.Grade)
             .InclusiveBetween(-2, 5)
             .WithMessage("Grade must be between -2 and 5");
 
@@ -12,7 +12,7 @@ public class AddSubjectToReportCardCommandValidator : AbstractValidator<AddSubje
             .LessThanOrEqualTo(DateTime.Now.Year)
             .WithMessage("Year must be less than or equal to the current year");
 
-        RuleFor(x => x.Semester)
+        RuleFor(x => (int)x.Semester)
             .InclusiveBetween(1, 3)
             .WithMessage("Semester must be between 1 and 3");
     }

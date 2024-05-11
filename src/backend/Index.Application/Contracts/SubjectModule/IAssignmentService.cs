@@ -6,11 +6,11 @@ public interface IAssignmentService
 {
     public Task<Assignment?> GetAssignment(int id);
     public Task<bool> CreateAssignment(CreateAssignmentDto dto);
-    public Task<bool> DeleteAssignment(int id);
-    public Task<AssignmentVm?> UpdateAssignmentName(int id, string name);
-    public Task<bool> UpdateLastModifiedDate(int id);
-    public Task<AssignmentVm?> UpdateAssignmentPriority(int id, AssignmentPriority priority);
-    public Task<AssignmentVm?> UpdateAssignmentStatus(int id, AssignmentStatus status);
-    public Task<AssignmentVm?> UpdateAssignmentStartDate(int id, DateTime startDate);
-    public Task<AssignmentVm?> UpdateAssignmentDueDate(int id, DateTime dueDate);
+    public Task<bool> DeleteAssignment(Assignment assignment);
+    public Task<AssignmentVm> UpdateAssignmentName(Assignment assignment, string name);
+    public Task<bool> UpdateLastModifiedDate(Assignment assignment);
+    public Task<AssignmentVm> UpdateAssignmentPriority(Assignment assignment, AssignmentPriority priority);
+    public Task<AssignmentVm> UpdateAssignmentStatus(Assignment assignment, AssignmentStatus status);
+    public Task<AssignmentVm> UpdateAssignmentStartDate(Assignment assignment, DateTime startDate);
+    public Task<AssignmentVm> UpdateAssignmentDueDate(Assignment assignment, DateTime dueDate);
 }

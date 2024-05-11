@@ -1,6 +1,4 @@
-﻿using Index.Application.Contracts.SubjectModule;
-
-namespace Index.Application.Features.Subject.Query.GetAllSubjects;
+﻿namespace Index.Application.Features.Subject.Query.GetAllSubjects;
 
 public class GetAllSubjectsQueryHandler(ISubjectService subjectService)
     : IRequestHandler<GetAllSubjectsQuery, Response<List<SubjectVm>>>
@@ -9,7 +7,7 @@ public class GetAllSubjectsQueryHandler(ISubjectService subjectService)
         CancellationToken cancellationToken)
     {
         var subjects = await subjectService.GetAllSubjects();
-        var result = subjects.Select(x => new SubjectVm()
+        var result = subjects.Select(x => new SubjectVm
             {
                 SubjectCode = x.SubjectCode,
                 SubjectName = x.Name,
@@ -18,15 +16,13 @@ public class GetAllSubjectsQueryHandler(ISubjectService subjectService)
             .ToList();
 
         if (result.Count == 0)
-        {
-            return new Response<List<SubjectVm>>()
+            return new Response<List<SubjectVm>>
             {
                 ErrorCode = IndexErrorCode.NotFound,
                 Error = "Could not find any subjects"
             };
-        }
 
-        return new Response<List<SubjectVm>>()
+        return new Response<List<SubjectVm>>
         {
             Result = result
         };

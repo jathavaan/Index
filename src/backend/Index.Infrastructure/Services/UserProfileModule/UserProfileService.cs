@@ -1,12 +1,13 @@
-﻿
-namespace Index.Infrastructure.Services.UserProfileModule;
+﻿namespace Index.Infrastructure.Services.UserProfileModule;
 
 public class UserProfileService : IUserProfileService
 {
     private readonly IndexDbContext _context;
 
     public UserProfileService(IndexDbContext context)
-        => _context = context;
+    {
+        _context = context;
+    }
 
     public async Task<UserProfileVm> CreateUserProfile(CreateUserProfileCommandDto dto)
     {
@@ -33,18 +34,25 @@ public class UserProfileService : IUserProfileService
         };
     }
 
-    public async Task<UserProfileVm?> GetUserProfileByIdOrEmail(string idOrEmail)
+    public async Task<UserProfile?> GetUserProfileByIdOrEmail(string idOrEmail)
         => await _context.UserProfiles
             .Where(x => x.Id == idOrEmail || x.Email == idOrEmail)
-            .Select(x => new UserProfileVm
-            {
-                Id = x.Id,
-                Email = x.Email,
-                FirstName = x.FirstName,
-                Surname = x.Surname,
-                AccessLevel = x.AccessLevel
-            })
             .FirstOrDefaultAsync();
+
+    public async Task<UserProfileVm?> GetUserProfileVmByIdOrEmail(string idOrEmail)
+    {
+        var userProfile = await GetUserProfileByIdOrEmail(idOrEmail);
+        return userProfile is null
+            ? null
+            : new UserProfileVm
+            {
+                Id = userProfile.Id,
+                FirstName = userProfile.FirstName,
+                Surname = userProfile.Surname,
+                Email = userProfile.Email,
+                AccessLevel = userProfile.AccessLevel
+            };
+    }
 
     public async Task<bool> CheckUserCredentials(string email, string password)
     {

@@ -1,6 +1,4 @@
-﻿using Index.Application.Contracts.SubjectModule;
-
-namespace Index.Application.Features.Assignment.Command.EditAssignmentName;
+﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentName;
 
 public class EditAssignmentNameCommandHandler(
     IAssignmentService assignmentService
@@ -9,16 +7,15 @@ public class EditAssignmentNameCommandHandler(
     public async Task<CommandResponse<AssignmentVm>> Handle(EditAssignmentNameCommand request,
         CancellationToken cancellationToken)
     {
-        var result = await assignmentService.UpdateAssignmentName(request.Id, request.Name);
-        if (result is null)
-        {
+        var assignment = await assignmentService.GetAssignment(request.Id);
+        if (assignment is null)
             return new CommandResponse<AssignmentVm>
             {
                 ErrorCode = IndexErrorCode.NotFound,
-                Error = $"Assignment with id {request.Id} not found"
+                Error = $"Could not find assignment with id {request.Id}"
             };
-        }
 
+        var result = await assignmentService.UpdateAssignmentName(assignment, request.Name);
         return new CommandResponse<AssignmentVm>
         {
             Result = result

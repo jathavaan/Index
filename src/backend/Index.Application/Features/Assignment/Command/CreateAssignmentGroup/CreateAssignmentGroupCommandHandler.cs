@@ -1,19 +1,39 @@
-﻿using Index.Application.Contracts.SubjectModule;
+﻿namespace Index.Application.Features.Assignment.Command.CreateAssignmentGroup;
 
-namespace Index.Application.Features.Assignment.Command.CreateAssignmentGroup;
-
-public class CreateAssignmentGroupCommandHandler(IAssignmentGroupSerivce assignmentGroupSerivce)
+public class CreateAssignmentGroupCommandHandler(
+    IAssignmentGroupSerivce assignmentGroupSerivce,
+    IUserProfileService userProfileService,
+    ISubjectService subjectService
+)
     : IRequestHandler<CreateAssignmentGroupCommand, CommandResponse<bool>>
 {
     public async Task<CommandResponse<bool>> Handle(CreateAssignmentGroupCommand request,
         CancellationToken cancellationToken)
-        => new()
+    {
+        var userProfile = await userProfileService.GetUserProfileByIdOrEmail(request.UserProfileId);
+        if (userProfile == null)
+            return new CommandResponse<bool>
+            {
+                ErrorCode = IndexErrorCode.NotFound,
+                Error = "User profile not found"
+            };
+
+        var subject = await subjectService.GetSubject(request.SubjectCode);
+        if (subject == null)
+            return new CommandResponse<bool>
+            {
+                ErrorCode = IndexErrorCode.NotFound,
+                Error = "Subject not found"
+            };
+
+        return new CommandResponse<bool>
         {
             Result = await assignmentGroupSerivce.CreateAssignmentGroup(
-                request.SubjectCode,
+                subject,
                 request.TotalAssignments,
                 request.RequiredAssignments,
-                request.UserProfileId
+                userProfile
             )
         };
+    }
 }

@@ -1,55 +1,38 @@
-﻿
-namespace Index.Infrastructure.Services.SubjectModule;
+﻿namespace Index.Infrastructure.Services.SubjectModule;
 
 public class AssignmentGroupService : IAssignmentGroupSerivce
 {
-    private readonly ILogger<AssignmentGroupService> _logger;
     private readonly IndexDbContext _context;
-    private readonly ISubjectService _subjectService;
-    private readonly IUserProfileService _userProfileService;
+    private readonly ILogger<AssignmentGroupService> _logger;
 
-    public AssignmentGroupService(ILogger<AssignmentGroupService> logger, IndexDbContext context,
-        ISubjectService subjectService, IUserProfileService userProfileService)
+    public AssignmentGroupService(ILogger<AssignmentGroupService> logger, IndexDbContext context)
     {
         _logger = logger;
         _context = context;
-        _subjectService = subjectService;
-        _userProfileService = userProfileService;
     }
 
     public async Task<AssignmentGroup?> GetAssignmentGroupById(int id)
-        => await _context.AssignmentGroups
+    {
+        return await _context.AssignmentGroups
             .Where(x => x.Id == id)
             .Include(x => x.Subject)
             .Include(x => x.Assignments)
             .FirstOrDefaultAsync();
+    }
 
 
-    public async Task<List<AssignmentGroup>> GetAssignmentGroupsByUserProfileId(string userProfileId)
-        => await _context.AssignmentGroups
-            .Where(x => x.UserProfileId == userProfileId)
-            .ToListAsync();
-
-    public async Task<bool> CreateAssignmentGroup(string subjectCode, int totalAssignments,
-        int assignmentsRequired, string userProfileId)
+    public async Task<List<AssignmentGroup>> GetAssignmentGroupsByUserProfile(UserProfile userProfile)
     {
-        var subject = await _subjectService.GetSubject(subjectCode);
-        var userProfile = await _userProfileService.GetUserProfileByIdOrEmail(userProfileId);
-        var assignmentGroups = await GetAssignmentGroupsByUserProfileId(userProfileId);
+        return await _context.AssignmentGroups
+            .Where(x => x.UserProfileId == userProfile.Id)
+            .ToListAsync();
+    }
 
-        if (subject is null)
-        {
-            _logger.LogInformation("Subject {subjectCode} does not exist", subjectCode);
-            return false;
-        }
-
-        if (userProfile is null)
-        {
-            _logger.LogInformation("User profile {userProfileId} does not exist", userProfileId);
-            return false;
-        }
-
-        if (assignmentGroups.Select(ag => ag.SubjectCode).Any(sc => sc == subjectCode))
+    public async Task<bool> CreateAssignmentGroup(Subject subject, int totalAssignments,
+        int assignmentsRequired, UserProfile userProfile)
+    {
+        var assignmentGroups = await GetAssignmentGroupsByUserProfile(userProfile);
+        if (assignmentGroups.Select(ag => ag.SubjectCode).Any(sc => sc == subject.SubjectCode))
         {
             _logger.LogInformation(
                 "Subject {subject.SubjectCode} has already been added to the assignment groups",
@@ -72,71 +55,51 @@ public class AssignmentGroupService : IAssignmentGroupSerivce
         return true;
     }
 
-    public async Task<bool> UpdateAssignmentGroup(int id, string? subjectCode, int? totalAssignments,
+    public async Task<bool> UpdateAssignmentGroup(AssignmentGroup assignmentGroup, Subject? subject,
+        int? totalAssignments,
         int? assignmentsRequired)
     {
-        var assignmentGroup = await GetAssignmentGroupById(id);
-        if (assignmentGroup is null)
+        if (subject is not null) assignmentGroup.SubjectCode = subject.SubjectCode;
+        if (totalAssignments is not null && assignmentsRequired is not null)
         {
-            _logger.LogInformation("Assignment group {id} does not exist", id);
-            return false;
-        }
-
-        if (subjectCode is not null)
-        {
-            var subject = await _subjectService.GetSubject(subjectCode);
-            if (subject is null)
+            if (totalAssignments < assignmentsRequired)
             {
-                _logger.LogInformation("Subject {subjectCode} does not exist", subjectCode);
+                _logger.LogError("Total assignments cannot be less than assignments required");
                 return false;
             }
 
-            assignmentGroup.SubjectCode = subjectCode;
+            assignmentGroup.TotalAssignments = totalAssignments.Value;
+            assignmentGroup.AssignmentsRequired = assignmentsRequired.Value;
         }
-
-        switch (totalAssignments)
+        else if (totalAssignments is not null)
         {
-            case >= 0:
-                assignmentGroup.TotalAssignments = totalAssignments.Value;
-                break;
-            case < 0:
-                _logger.LogInformation("Total assignments {totalAssignments} is less than 0", totalAssignments);
+            if (totalAssignments < assignmentGroup.AssignmentsRequired)
+            {
+                _logger.LogError("Total assignments cannot be less than assignments required");
                 return false;
+            }
+
+            assignmentGroup.TotalAssignments = totalAssignments.Value;
         }
-
-        switch (assignmentsRequired)
+        else if (assignmentsRequired is not null)
         {
-            case >= 0 when assignmentsRequired <= assignmentGroup.TotalAssignments:
-                assignmentGroup.AssignmentsRequired = assignmentsRequired.Value;
-                break;
-            case >= 0 when totalAssignments < 0:
-                _logger.LogInformation("Assignments required {assignmentsRequired} is less than 0",
-                    assignmentsRequired);
+            if (assignmentGroup.TotalAssignments < assignmentsRequired)
+            {
+                _logger.LogError("Required assignments cannot be greater than total assignments");
                 return false;
-            case >= 0:
-                _logger.LogInformation(
-                    "Assignments required {assignmentsRequired} is greater than total assignments {totalAssignments}",
-                    assignmentsRequired, assignmentGroup.TotalAssignments
-                );
-                return false;
+            }
+
+            assignmentGroup.AssignmentsRequired = assignmentsRequired.Value;
         }
 
         await _context.SaveChangesAsync();
         return true;
     }
 
-    public async Task<bool> DeleteAssignmentGroup(int id)
+    public async Task<bool> DeleteAssignmentGroup(AssignmentGroup assignmentGroup)
     {
-        var assignmentGroup = await GetAssignmentGroupById(id);
-
-        switch (assignmentGroup)
-        {
-            case not null:
-                _context.AssignmentGroups.Remove(assignmentGroup);
-                await _context.SaveChangesAsync();
-                return true;
-            default:
-                return false;
-        }
+        _context.AssignmentGroups.Remove(assignmentGroup);
+        await _context.SaveChangesAsync();
+        return true;
     }
 }

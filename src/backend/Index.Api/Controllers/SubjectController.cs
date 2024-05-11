@@ -10,7 +10,8 @@ public class SubjectController(IMediator mediator) : IndexControllerBase(mediato
     [ApiConventionMethod(typeof(SwaggerApiConvention), nameof(SwaggerApiConvention.StatusResponseTypes))]
     [ActionName(nameof(GetSubject))]
     public async Task<ActionResult<SubjectVm>> GetSubject(string subjectCode)
-        => await SendRequest<SubjectVm, GetSubjectBySubjectCodeQuery>(new GetSubjectBySubjectCodeQuery(subjectCode));
+        => await SendRequest<SubjectVm, GetSubjectBySubjectCodeQuery>(
+            new GetSubjectBySubjectCodeQuery(subjectCode));
 
     [HttpGet("get")]
     [Produces("application/json", Type = typeof(SubjectVm))]

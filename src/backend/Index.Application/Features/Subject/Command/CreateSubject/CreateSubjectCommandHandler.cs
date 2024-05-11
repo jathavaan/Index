@@ -1,13 +1,13 @@
-﻿using Index.Application.Contracts.SubjectModule;
-
-namespace Index.Application.Features.Subject.Command.CreateSubject;
+﻿namespace Index.Application.Features.Subject.Command.CreateSubject;
 
 public class CreateSubjectCommandHandler(ISubjectService subjectService)
     : IRequestHandler<CreateSubjectCommand, CommandResponse<bool>>
 {
     public async Task<CommandResponse<bool>> Handle(CreateSubjectCommand request, CancellationToken cancellationToken)
-        => new()
+    {
+        return new CommandResponse<bool>
         {
             Result = await subjectService.CreateSubject(request.Dto.SubjectCode, request.Dto.Name, request.Dto.Credit)
         };
+    }
 }

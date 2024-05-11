@@ -1,3 +1,5 @@
+using Serilog.Debugging;
+
 namespace Index.Api.WebApplicationConfigurations;
 
 public static class WebApplicationConfigurations
@@ -31,7 +33,7 @@ public static class WebApplicationConfigurations
 
         builder.Host.UseSerilog((context, loggerConfiguration) =>
         {
-            Serilog.Debugging.SelfLog.Enable(Console.WriteLine);
+            SelfLog.Enable(Console.WriteLine);
 
             loggerConfiguration.ReadFrom.Configuration(context.Configuration)
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)

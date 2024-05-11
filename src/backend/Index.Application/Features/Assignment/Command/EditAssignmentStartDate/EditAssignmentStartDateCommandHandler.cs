@@ -1,6 +1,4 @@
-﻿using Index.Application.Contracts.SubjectModule;
-
-namespace Index.Application.Features.Assignment.Command.EditAssignmentStartDate;
+﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentStartDate;
 
 public class EditAssignmentStartDateCommandHandler(
     IAssignmentService assignmentService
@@ -9,19 +7,18 @@ public class EditAssignmentStartDateCommandHandler(
     public async Task<CommandResponse<AssignmentVm>> Handle(EditAssignmentStartDateCommand request,
         CancellationToken cancellationToken)
     {
-        var assignmentVm = await assignmentService.UpdateAssignmentStartDate(request.Id, request.StartDate);
-        if (assignmentVm is null)
-        {
+        var assignment = await assignmentService.GetAssignment(request.Id);
+        if (assignment is null)
             return new CommandResponse<AssignmentVm>
             {
                 ErrorCode = IndexErrorCode.NotFound,
-                Error = $"Could not find assignment with id {request.Id}"
+                Error = $"Assignment with id {request.Id} not found"
             };
-        }
 
+        var result = await assignmentService.UpdateAssignmentStartDate(assignment, request.StartDate);
         return new CommandResponse<AssignmentVm>
         {
-            Result = assignmentVm
+            Result = result
         };
     }
 }

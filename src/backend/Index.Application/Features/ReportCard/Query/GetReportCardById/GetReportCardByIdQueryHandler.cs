@@ -1,6 +1,4 @@
-﻿using Index.Application.Contracts.SubjectModule;
-
-namespace Index.Application.Features.ReportCard.Query.GetReportCardById;
+﻿namespace Index.Application.Features.ReportCard.Query.GetReportCardById;
 
 public class GetReportCardByIdQueryHandler(IReportCardService reportCardService)
     : IRequestHandler<GetReportCardByIdQuery, Response<ReportCardVm>>
@@ -19,8 +17,8 @@ public class GetReportCardByIdQueryHandler(IReportCardService reportCardService)
             };
         }
 
-        var gpa = await reportCardService.GetReportCardGpa(request.Id);
-        var totalCredits = await reportCardService.GetReportCardTotalCredits(request.Id);
+        var gpa = await reportCardService.GetReportCardGpa(reportCard);
+        var totalCredits = reportCardService.GetReportCardTotalCredits(reportCard);
 
         var result = new ReportCardVm
         {

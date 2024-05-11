@@ -1,6 +1,4 @@
-﻿using Index.Application.Contracts.SubjectModule;
-
-namespace Index.Application.Features.Assignment.Command.EditAssignmentDueDate;
+﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentDueDate;
 
 public class EditAssignmentDueDateCommandHandler(
     IAssignmentService assignmentService
@@ -9,16 +7,15 @@ public class EditAssignmentDueDateCommandHandler(
     public async Task<CommandResponse<AssignmentVm>> Handle(EditAssignmentDueDateCommand request,
         CancellationToken cancellationToken)
     {
-        var result = await assignmentService.UpdateAssignmentDueDate(request.Id, request.DueDate);
-        if (result is null)
-        {
+        var assignment = await assignmentService.GetAssignment(request.Id);
+        if (assignment is null)
             return new CommandResponse<AssignmentVm>
             {
                 ErrorCode = IndexErrorCode.NotFound,
-                Error = $"Assignment with id {request.Id} not found"
+                Error = $"Could not find assignment with id {request.Id}"
             };
-        }
 
+        var result = await assignmentService.UpdateAssignmentDueDate(assignment, request.DueDate);
         return new CommandResponse<AssignmentVm>
         {
             Result = result
