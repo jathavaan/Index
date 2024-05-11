@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentStatus;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Assignment.Command.EditAssignmentStatus;
 
 public class EditAssignmentStatusCommandHandler(
     IAssignmentService assignmentService

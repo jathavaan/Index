@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentName;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Assignment.Command.EditAssignmentName;
 
 public class EditAssignmentNameCommandHandler(
     IAssignmentService assignmentService

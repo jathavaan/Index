@@ -1,4 +1,4 @@
-﻿namespace Index.Application.Services.AssignmentService.Dtos;
+﻿namespace Index.Application.Contracts.SubjectModule.Dtos;
 
 public class CreateAssignmentDto
 {

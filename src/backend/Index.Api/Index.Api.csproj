@@ -24,7 +24,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Index.Application\Index.Application.csproj"/>
-        <ProjectReference Include="..\Index.Infrastructure\Index.Infrastructure.csproj"/>
+        <ProjectReference Include="..\Index.Infrastructure\Index.Infrastructure.csproj" />
         <ProjectReference Include="..\Index.Presistence\Index.Presistence.csproj"/>
     </ItemGroup>
 

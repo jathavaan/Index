@@ -1,7 +1,5 @@
-﻿using Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;
-using Index.Application.ViewModels;
-
-namespace Index.Application.Services.UserProfileService;
+﻿
+namespace Index.Application.Contracts.UserProfileModule;
 
 public interface IUserProfileService
 {

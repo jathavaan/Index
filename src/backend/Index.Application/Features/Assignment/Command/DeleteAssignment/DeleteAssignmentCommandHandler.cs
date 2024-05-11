@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Assignment.Command.DeleteAssignment;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Assignment.Command.DeleteAssignment;
 
 public class DeleteAssignmentCommandHandler(
     IAssignmentService assignmentService

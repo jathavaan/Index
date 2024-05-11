@@ -1,4 +1,4 @@
-﻿namespace Index.Application.Services.ReportCardService;
+﻿namespace Index.Application.Contracts.SubjectModule;
 
 public interface IReportCardService
 {

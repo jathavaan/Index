@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.ReportCard.Command.CreateReportCard;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.ReportCard.Command.CreateReportCard;
 
 public class CreateReportCardCommandHandler(IReportCardService reportCardService)
     : IRequestHandler<CreateReportCardCommand, CommandResponse<bool>>

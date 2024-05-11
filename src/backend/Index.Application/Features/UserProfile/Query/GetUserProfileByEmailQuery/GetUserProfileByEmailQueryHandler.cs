@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.UserProfile.Query.GetUserProfileByEmailQuery;
+﻿using Index.Application.Contracts.UserProfileModule;
+
+namespace Index.Application.Features.UserProfile.Query.GetUserProfileByEmailQuery;
 
 public class GetUserProfileByEmailQueryHandler(
     IUserProfileService userProfileService

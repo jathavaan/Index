@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Subject.Command.CreateSubject;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Subject.Command.CreateSubject;
 
 public class CreateSubjectCommandHandler(ISubjectService subjectService)
     : IRequestHandler<CreateSubjectCommand, CommandResponse<bool>>

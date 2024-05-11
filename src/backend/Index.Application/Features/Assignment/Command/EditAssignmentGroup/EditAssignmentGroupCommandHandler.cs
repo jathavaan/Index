@@ -1,4 +1,6 @@
-﻿namespace Index.Application.Features.Assignment.Command.EditAssignmentGroup;
+﻿using Index.Application.Contracts.SubjectModule;
+
+namespace Index.Application.Features.Assignment.Command.EditAssignmentGroup;
 
 public class EditAssignmentGroupCommandHandler(
     IAssignmentGroupSerivce assignmentGroupSerivce

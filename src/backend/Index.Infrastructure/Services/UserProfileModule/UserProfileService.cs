@@ -1,9 +1,5 @@
-﻿using Index.Application.Features.UserProfile.Command.CreateUserProfileCommand;
-using Index.Application.ViewModels;
-using Index.Domain.Entities.UserModule;
-using Microsoft.EntityFrameworkCore;
-
-namespace Index.Application.Services.UserProfileService;
+﻿
+namespace Index.Infrastructure.Services.UserProfileModule;
 
 public class UserProfileService : IUserProfileService
 {
