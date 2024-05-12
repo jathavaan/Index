@@ -11,6 +11,8 @@ public static class InfrastructureServiceRegistration
         services.AddTransient<IReportCardService, ReportCardService>();
         services.AddTransient<IAssignmentService, AssignmentService>();
         services.AddTransient<IAssignmentGroupSerivce, AssignmentGroupService>();
+        services.AddTransient<IStudyPlanService, StudyPlanService>();
+        services.AddTransient<IStudyPlanRestrictionService, StudyPlanRestrictionService>();
 
         // Hosted services
 

@@ -21,7 +21,7 @@ public class GetSubjectBySubjectCodeQueryHandler(
             {
                 SubjectCode = subject.SubjectCode,
                 SubjectName = subject.Name,
-                Credit = subject.Credits
+                Credits = subject.Credits
             }
         };
     }

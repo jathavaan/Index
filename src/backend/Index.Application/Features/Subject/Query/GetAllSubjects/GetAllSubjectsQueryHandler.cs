@@ -11,7 +11,7 @@ public class GetAllSubjectsQueryHandler(ISubjectService subjectService)
             {
                 SubjectCode = x.SubjectCode,
                 SubjectName = x.Name,
-                Credit = x.Credits
+                Credits = x.Credits
             })
             .ToList();
 

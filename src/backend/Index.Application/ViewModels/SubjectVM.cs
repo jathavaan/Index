@@ -4,5 +4,5 @@ public class SubjectVm
 {
     public string SubjectCode { get; set; } = null!;
     public string SubjectName { get; set; } = null!;
-    public double Credit { get; set; }
+    public double Credits { get; set; }
 }

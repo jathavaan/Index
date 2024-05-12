@@ -17,4 +17,8 @@
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\StudyPlan\Command\StudyPlan\" />
+    </ItemGroup>
+
 </Project>

@@ -1,5 +1,3 @@
-using Serilog.Debugging;
-
 namespace Index.Api.WebApplicationConfigurations;
 
 public static class WebApplicationConfigurations
@@ -19,7 +17,10 @@ public static class WebApplicationConfigurations
 
     internal static WebApplicationBuilder ConfigureControllers(this WebApplicationBuilder builder)
     {
-        builder.Services.AddControllers();
+        builder.Services
+            .AddControllers();
+        // .AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new DateTimeConverter()); });
+
         return builder;
     }
 
@@ -44,5 +45,13 @@ public static class WebApplicationConfigurations
         }, true);
 
         return builder;
+    }
+
+    internal static WebApplication ConfigureSwagger(this WebApplication app)
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+
+        return app;
     }
 }
