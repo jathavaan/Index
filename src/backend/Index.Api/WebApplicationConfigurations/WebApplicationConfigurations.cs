@@ -1,7 +1,16 @@
+using System.Reflection;
+
 namespace Index.Api.WebApplicationConfigurations;
 
 public static class WebApplicationConfigurations
 {
+    internal static WebApplicationBuilder ConfigureSwaggerGen(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddSwaggerGen(c => { c.ExampleFilters(); });
+
+        return builder;
+    }
+
     internal static WebApplicationBuilder ConfigureConfigurations(this WebApplicationBuilder builder)
     {
         return builder;
@@ -17,10 +26,7 @@ public static class WebApplicationConfigurations
 
     internal static WebApplicationBuilder ConfigureControllers(this WebApplicationBuilder builder)
     {
-        builder.Services
-            .AddControllers();
-        // .AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new DateTimeConverter()); });
-
+        builder.Services.AddControllers();
         return builder;
     }
 
@@ -37,9 +43,6 @@ public static class WebApplicationConfigurations
             SelfLog.Enable(Console.WriteLine);
 
             loggerConfiguration.ReadFrom.Configuration(context.Configuration)
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-                .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
-                .MinimumLevel.Override("Microsoft.AspNetCore.Hosting", LogEventLevel.Information)
                 .Enrich.WithMachineName()
                 .WriteTo.Console();
         }, true);
@@ -47,10 +50,20 @@ public static class WebApplicationConfigurations
         return builder;
     }
 
+    internal static WebApplicationBuilder ConfigureModelExamples(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());
+        return builder;
+    }
+
     internal static WebApplication ConfigureSwagger(this WebApplication app)
     {
         app.UseSwagger();
-        app.UseSwaggerUI();
+        app.UseSwaggerUI(options =>
+        {
+            options.EnableDeepLinking();
+            options.DefaultModelsExpandDepth(0);
+        });
 
         return app;
     }
