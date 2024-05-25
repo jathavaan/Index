@@ -15,10 +15,11 @@ builder.ConfigureModelExamples();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+/*if (app.Environment.IsDevelopment())
 {
-    app.ConfigureSwagger();
-}
+}*/
+
+app.ConfigureSwagger();
 
 app.UseHttpsRedirection();
 app.MapControllers();
