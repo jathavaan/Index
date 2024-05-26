@@ -15,8 +15,7 @@ internal class ReportCardConfiguration : IEntityTypeConfiguration<ReportCard>
             .IsRequired();
 
         builder.Property(x => x.DateCreated)
-            .IsRequired()
-            .HasDefaultValue(DateTime.Now);
+            .IsRequired();
 
         builder.Property(x => x.UserProfileId)
             .IsRequired()

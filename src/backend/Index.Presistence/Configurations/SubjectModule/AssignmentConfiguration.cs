@@ -16,8 +16,7 @@ internal class AssignmentConfiguration : IEntityTypeConfiguration<Assignment>
             .HasMaxLength(100);
 
         builder.Property(x => x.DateCreated)
-            .IsRequired()
-            .HasDefaultValue(DateTime.Now);
+            .IsRequired();
 
         builder.Property(x => x.DateModified)
             .HasDefaultValue(null);

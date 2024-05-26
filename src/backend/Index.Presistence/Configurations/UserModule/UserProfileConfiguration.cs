@@ -18,8 +18,8 @@ public class UserProfileConfiguration : IEntityTypeConfiguration<UserProfile>
         builder.Property(x => x.Email)
             .IsRequired();
 
-        builder.Property(x => x.Password)
-            .IsRequired();
+        /*builder.Property(x => x.Password)
+            .IsRequired();*/
 
         builder.HasMany(x => x.ReportCards)
             .WithOne(x => x.UserProfile)
