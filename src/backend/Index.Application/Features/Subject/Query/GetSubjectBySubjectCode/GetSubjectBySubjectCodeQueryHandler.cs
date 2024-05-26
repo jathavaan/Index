@@ -9,11 +9,13 @@ public class GetSubjectBySubjectCodeQueryHandler(
     {
         var subject = await subjectService.GetSubject(request.SubjectCode);
         if (subject is null)
+        {
             return new Response<SubjectVm>
             {
                 ErrorCode = IndexErrorCode.NotFound,
                 Error = $"Could not find subject with subject code {request.SubjectCode}"
             };
+        }
 
         return new Response<SubjectVm>
         {

@@ -3,10 +3,12 @@
 public class SubjectService : ISubjectService
 {
     private readonly IndexDbContext _context;
+    private readonly IRedisCacheService _redisCacheService;
 
-    public SubjectService(IndexDbContext context)
+    public SubjectService(IndexDbContext context, IRedisCacheService redisCacheService)
     {
         _context = context;
+        _redisCacheService = redisCacheService;
     }
 
     public async Task<List<Subject>> GetAllSubjects()
@@ -16,9 +18,17 @@ public class SubjectService : ISubjectService
 
     public async Task<Subject?> GetSubject(string subjectCode)
     {
-        return await _context.Subjects
+        var cachedSubject = await _redisCacheService.Get<Subject>(subjectCode);
+        if (cachedSubject is not null) return cachedSubject;
+
+        var subject = await _context.Subjects
             .Where(x => x.SubjectCode == subjectCode)
             .FirstOrDefaultAsync();
+
+        if (subject is not null)
+            await _redisCacheService.Set(subjectCode, subject, DateTimeOffset.Now.AddHours(2));
+
+        return subject;
     }
 
     public async Task<bool> CreateSubject(string subjectCode, string name, double credit)
@@ -47,6 +57,7 @@ public class SubjectService : ISubjectService
 
         _context.Subjects.Update(subject);
         await _context.SaveChangesAsync();
+        await _redisCacheService.Set(subject.SubjectCode, subject);
 
         return true;
     }
@@ -55,6 +66,7 @@ public class SubjectService : ISubjectService
     {
         _context.Subjects.Remove(subject);
         await _context.SaveChangesAsync();
+        await _redisCacheService.Remove(subject.SubjectCode);
         return true;
     }
 }
