@@ -2,8 +2,6 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Logging;
-global using System.Text.Json;
-global using System.Text.Json.Serialization;
 global using Index.Domain.Entities.UserModule;
 global using Index.Domain.Entities.SubjectModule;
 global using Index.Domain.Enums;

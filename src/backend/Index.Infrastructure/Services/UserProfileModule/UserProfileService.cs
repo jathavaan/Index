@@ -17,7 +17,7 @@ public class UserProfileService : IUserProfileService
             FirstName = dto.FirstName,
             Surname = dto.Surname,
             Email = dto.Email.ToLower(),
-            Password = BCrypt.Net.BCrypt.EnhancedHashPassword(dto.Password),
+            // Password = BCrypt.Net.BCrypt.EnhancedHashPassword(dto.Password),
             AccessLevel = (UserProfileAccessLevel)dto.AccessLevel
         };
 
@@ -49,7 +49,7 @@ public class UserProfileService : IUserProfileService
                 Id = userProfile.Id,
                 FirstName = userProfile.FirstName,
                 Surname = userProfile.Surname,
-                Email = userProfile.Email,
+                Email = userProfile.Email ?? string.Empty,
                 AccessLevel = userProfile.AccessLevel
             };
     }
@@ -60,6 +60,6 @@ public class UserProfileService : IUserProfileService
             .Where(x => string.Equals(email, x.Email, StringComparison.OrdinalIgnoreCase))
             .FirstOrDefaultAsync();
 
-        return userProfile is not null && BCrypt.Net.BCrypt.EnhancedVerify(password, userProfile.Password);
+        return userProfile is not null /*&& BCrypt.Net.BCrypt.EnhancedVerify(password, userProfile.Password)*/;
     }
 }
