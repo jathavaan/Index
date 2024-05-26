@@ -8,6 +8,7 @@ public static class InfrastructureServiceRegistration
         // Transient services
         services.AddTransient<IUserProfileService, UserProfileService>();
         services.AddTransient<ISubjectService, SubjectService>();
+        services.AddTransient<IRedisCacheService, RedisCacheService>();
         services.AddTransient<IReportCardService, ReportCardService>();
         services.AddTransient<IAssignmentService, AssignmentService>();
         services.AddTransient<IAssignmentGroupSerivce, AssignmentGroupService>();

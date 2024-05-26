@@ -1,3 +1,4 @@
+using Index.Api.Configurations;
 using Index.Api.ProgramConfigurations;
 
 var builder = WebApplication.CreateBuilder(args);

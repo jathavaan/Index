@@ -1,6 +1,6 @@
-using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
 
-namespace Index.Api.ProgramConfigurations;
+namespace Index.Api.Configurations;
 
 public static class WebApplicationBuilderConfigurations
 {
@@ -8,37 +8,33 @@ public static class WebApplicationBuilderConfigurations
     {
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddInfraStructureServices(builder.Configuration);
-        builder.Services.AddControllers();
-        builder.Services.AddMediatR();
 
+        builder.Services.AddMediatR();
+        builder.ConfigureControllers();
         builder.ConfigureConfigurations();
         builder.ConfigureDatabase();
         builder.ConfigureAuthenticationAndAuthorization();
         builder.ConfigureLogging();
         builder.ConfigureSwaggerGen();
         builder.ConfigureModelExamples();
+        builder.ConfigureCache();
 
         return builder;
     }
 
-    private static WebApplicationBuilder ConfigureSwaggerGen(this WebApplicationBuilder builder)
+    private static void ConfigureSwaggerGen(this WebApplicationBuilder builder)
     {
         builder.Services.AddSwaggerGen(options => { options.ExampleFilters(); });
-
-        return builder;
     }
 
-    private static WebApplicationBuilder ConfigureConfigurations(this WebApplicationBuilder builder)
+    private static void ConfigureConfigurations(this WebApplicationBuilder builder)
     {
-        return builder;
     }
 
-    private static WebApplicationBuilder ConfigureDatabase(this WebApplicationBuilder builder)
+    private static void ConfigureDatabase(this WebApplicationBuilder builder)
     {
         builder.Services.AddDbContext<IndexDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("Index")));
-
-        return builder;
     }
 
     private static WebApplicationBuilder ConfigureControllers(this WebApplicationBuilder builder)
@@ -47,12 +43,11 @@ public static class WebApplicationBuilderConfigurations
         return builder;
     }
 
-    private static WebApplicationBuilder ConfigureAuthenticationAndAuthorization(this WebApplicationBuilder builder)
+    private static void ConfigureAuthenticationAndAuthorization(this WebApplicationBuilder builder)
     {
-        return builder;
     }
 
-    private static WebApplicationBuilder ConfigureLogging(this WebApplicationBuilder builder)
+    private static void ConfigureLogging(this WebApplicationBuilder builder)
     {
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(builder.Configuration)
@@ -68,13 +63,16 @@ public static class WebApplicationBuilderConfigurations
                 .Enrich.WithMachineName()
                 .WriteTo.Console();
         }, true);
-
-        return builder;
     }
 
-    private static WebApplicationBuilder ConfigureModelExamples(this WebApplicationBuilder builder)
+    private static void ConfigureModelExamples(this WebApplicationBuilder builder)
     {
         builder.Services.AddSwaggerExamplesFromAssemblies(Assembly.GetEntryAssembly());
-        return builder;
+    }
+
+    private static void ConfigureCache(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddTransient<IConnectionMultiplexer>(_ =>
+            ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("RedisCache") ?? string.Empty));
     }
 }
