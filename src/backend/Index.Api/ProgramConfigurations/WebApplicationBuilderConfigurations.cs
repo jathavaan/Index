@@ -23,34 +23,7 @@ public static class WebApplicationBuilderConfigurations
 
     private static WebApplicationBuilder ConfigureSwaggerGen(this WebApplicationBuilder builder)
     {
-        builder.Services.AddSwaggerGen(options =>
-        {
-            options.ExampleFilters();
-            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-            {
-                In = ParameterLocation.Header,
-                Description = "Please enter bearer token",
-                Name = "Authorization",
-                Type = SecuritySchemeType.Http,
-                BearerFormat = "JWT",
-                Scheme = "bearer"
-            });
-
-            options.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
-                        }
-                    },
-                    Array.Empty<string>()
-                }
-            });
-        });
+        builder.Services.AddSwaggerGen(options => { options.ExampleFilters(); });
 
         return builder;
     }
@@ -76,13 +49,6 @@ public static class WebApplicationBuilderConfigurations
 
     private static WebApplicationBuilder ConfigureAuthenticationAndAuthorization(this WebApplicationBuilder builder)
     {
-        /*builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
-        builder.Services.AddAuthorizationBuilder();
-
-        builder.Services.AddIdentityCore<UserProfile>()
-            .AddEntityFrameworkStores<IndexDbContext>()
-            .AddApiEndpoints();*/
-
         return builder;
     }
 

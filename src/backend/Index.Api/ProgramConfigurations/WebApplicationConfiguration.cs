@@ -10,7 +10,6 @@ internal static class WebApplicationConfiguration
         }
 
         app.UseHttpsRedirection();
-        // app.MapIdentityApi();
         app.AddAuthenticationAndAuthorization();
         app.MapControllers();
 
@@ -31,14 +30,11 @@ internal static class WebApplicationConfiguration
 
     private static WebApplication MapIdentityApi(this WebApplication app)
     {
-        // app.MapIdentityApi<UserProfile>();
         return app;
     }
 
     private static WebApplication AddAuthenticationAndAuthorization(this WebApplication app)
     {
-        /*app.UseAuthentication();
-        app.UseAuthorization();*/
         return app;
     }
 }
