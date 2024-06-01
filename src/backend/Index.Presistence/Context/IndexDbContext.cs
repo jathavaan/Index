@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 namespace Index.Presistence.Context;
 
-public class IndexDbContext(DbContextOptions<IndexDbContext> options) : DbContext(options)
+public class IndexDbContext(DbContextOptions<IndexDbContext> options) : IdentityDbContext<UserProfile>(options)
 {
     public virtual DbSet<UserProfile> UserProfiles { get; set; }
 
@@ -19,6 +21,9 @@ public class IndexDbContext(DbContextOptions<IndexDbContext> options) : DbContex
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Identity
+        base.OnModelCreating(modelBuilder);
+
         // Dataseeding
         SubjectSeed.LookupData(modelBuilder);
 

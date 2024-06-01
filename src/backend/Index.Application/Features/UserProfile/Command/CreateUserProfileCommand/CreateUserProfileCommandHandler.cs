@@ -20,6 +20,15 @@ public class CreateUserProfileCommandHandler : IRequestHandler<CreateUserProfile
             };
 
         var userProfile = await _userProfileService.CreateUserProfile(request.Dto);
+        if (userProfile is null)
+        {
+            return new CommandResponse<UserProfileVm>()
+            {
+                ErrorCode = IndexErrorCode.BusinessRuleValidation,
+                Error = "Failed to create user profile."
+            };
+        }
+
         return new CommandResponse<UserProfileVm>
         {
             Result = userProfile

@@ -1,3 +1,6 @@
+using Azure.Extensions.AspNetCore.Configuration.Secrets;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 using StackExchange.Redis;
 
 namespace Index.Api.Configurations;
@@ -11,8 +14,8 @@ public static class WebApplicationBuilderConfigurations
 
         builder.Services.AddMediatR();
         builder.ConfigureControllers();
-        builder.ConfigureConfigurations();
         builder.ConfigureDatabase();
+        builder.ConfigureConfigurations();
         builder.ConfigureAuthenticationAndAuthorization();
         builder.ConfigureLogging();
         builder.ConfigureSwaggerGen();
@@ -33,8 +36,24 @@ public static class WebApplicationBuilderConfigurations
 
     private static void ConfigureDatabase(this WebApplicationBuilder builder)
     {
-        builder.Services.AddDbContext<IndexDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("Index")));
+        if (builder.Environment.IsDevelopment())
+        {
+            builder.Services.AddDbContext<IndexDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings:Index").Value)
+                    .EnableSensitiveDataLogging());
+        }
+
+        if (builder.Environment.IsProduction())
+        {
+            var client = builder.ConfigureAzureKeyVault();
+
+            builder.Services.AddDbContext<IndexDbContext>(options =>
+                options.UseSqlServer(client.GetSecret("ConnectionStrings--Index").Value.Value)
+                    .EnableSensitiveDataLogging());
+        }
+
+        builder.Services.AddIdentity<UserProfile, IdentityRole>()
+            .AddEntityFrameworkStores<IndexDbContext>();
     }
 
     private static WebApplicationBuilder ConfigureControllers(this WebApplicationBuilder builder)
@@ -74,5 +93,19 @@ public static class WebApplicationBuilderConfigurations
     {
         builder.Services.AddTransient<IConnectionMultiplexer>(_ =>
             ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("RedisCache") ?? string.Empty));
+    }
+
+    private static SecretClient ConfigureAzureKeyVault(this WebApplicationBuilder builder)
+    {
+        var keyVaultUrl = builder.Configuration.GetSection("KeyVault:KeyVaultUrl").Value;
+        var keyVaultClientId = builder.Configuration.GetSection("KeyVault:ClientId").Value;
+        var keyVaultClientSecret = builder.Configuration.GetSection("KeyVault:ClientSecret").Value;
+        var keyVaultDirectoryId = builder.Configuration.GetSection("KeyVault:DirectoryId").Value;
+
+        var credential = new ClientSecretCredential(keyVaultDirectoryId, keyVaultClientId, keyVaultClientSecret);
+        var secretClient = new SecretClient(new Uri(keyVaultUrl!), credential);
+        builder.Configuration.AddAzureKeyVault(secretClient, new KeyVaultSecretManager());
+
+        return secretClient;
     }
 }

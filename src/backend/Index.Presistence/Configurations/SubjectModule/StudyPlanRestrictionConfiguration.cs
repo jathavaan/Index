@@ -4,7 +4,7 @@ internal class StudyPlanRestrictionConfiguration : IEntityTypeConfiguration<Stud
 {
     public void Configure(EntityTypeBuilder<StudyPlanRestriction> builder)
     {
-        builder.ToTable("StudyPlanRestrictions", "sub");
+        builder.ToTable("StudyPlanRestrictions", DatabaseSchema.Subject);
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id)

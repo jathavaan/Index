@@ -1,15 +1,19 @@
-﻿namespace Index.Infrastructure.Services.UserProfileModule;
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace Index.Infrastructure.Services.UserProfileModule;
 
 public class UserProfileService : IUserProfileService
 {
-    private readonly IndexDbContext _context;
+    private readonly UserManager<UserProfile> _userManager;
+    private readonly ILogger<UserProfileService> _logger;
 
-    public UserProfileService(IndexDbContext context)
+    public UserProfileService(UserManager<UserProfile> userManager, ILogger<UserProfileService> logger)
     {
-        _context = context;
+        _userManager = userManager;
+        _logger = logger;
     }
 
-    public async Task<UserProfileVm> CreateUserProfile(CreateUserProfileCommandDto dto)
+    public async Task<UserProfileVm?> CreateUserProfile(CreateUserProfileCommandDto dto)
     {
         var userProfile = new UserProfile
         {
@@ -17,27 +21,37 @@ public class UserProfileService : IUserProfileService
             FirstName = dto.FirstName,
             Surname = dto.Surname,
             Email = dto.Email.ToLower(),
-            // Password = BCrypt.Net.BCrypt.EnhancedHashPassword(dto.Password),
+            UserName = dto.Email.ToLower(),
             AccessLevel = (UserProfileAccessLevel)dto.AccessLevel
         };
 
-        _context.UserProfiles.Add(userProfile);
-        await _context.SaveChangesAsync();
+        var hashedPassword = _userManager.PasswordHasher.HashPassword(userProfile, dto.Password);
+        var result = await _userManager.CreateAsync(userProfile, hashedPassword);
 
-        return new UserProfileVm
+        if (!result.Errors.Any())
         {
-            Id = userProfile.Id,
-            FirstName = userProfile.FirstName,
-            Surname = userProfile.Surname,
-            Email = userProfile.Email,
-            AccessLevel = userProfile.AccessLevel
-        };
+            return new UserProfileVm
+            {
+                Id = userProfile.Id,
+                FirstName = userProfile.FirstName,
+                Surname = userProfile.Surname,
+                Email = userProfile.Email,
+                AccessLevel = userProfile.AccessLevel
+            };
+        }
+
+        var errors = result.Errors.Select(x => x.Description);
+        var errorMessages = "\n-> " + string.Join("\n->", errors);
+        _logger.LogError(
+            "The following errors occurred while creating a user profile:{errorMessages}",
+            errorMessages
+        );
+        return null;
     }
 
     public async Task<UserProfile?> GetUserProfileByIdOrEmail(string idOrEmail)
-        => await _context.UserProfiles
-            .Where(x => x.Id == idOrEmail || x.Email == idOrEmail)
-            .FirstOrDefaultAsync();
+        => await _userManager.FindByIdAsync(idOrEmail) ?? await _userManager.FindByEmailAsync(idOrEmail.ToLower());
+
 
     public async Task<UserProfileVm?> GetUserProfileVmByIdOrEmail(string idOrEmail)
     {
@@ -52,14 +66,5 @@ public class UserProfileService : IUserProfileService
                 Email = userProfile.Email ?? string.Empty,
                 AccessLevel = userProfile.AccessLevel
             };
-    }
-
-    public async Task<bool> CheckUserCredentials(string email, string password)
-    {
-        var userProfile = await _context.UserProfiles
-            .Where(x => string.Equals(email, x.Email, StringComparison.OrdinalIgnoreCase))
-            .FirstOrDefaultAsync();
-
-        return userProfile is not null /*&& BCrypt.Net.BCrypt.EnhancedVerify(password, userProfile.Password)*/;
     }
 }

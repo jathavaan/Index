@@ -4,7 +4,7 @@ internal class ReportCardSubjectConfiguration : IEntityTypeConfiguration<ReportC
 {
     public void Configure(EntityTypeBuilder<ReportCardSubject> builder)
     {
-        builder.ToTable("ReportCardSubjects", "sub");
+        builder.ToTable("ReportCardSubjects", DatabaseSchema.Subject);
         builder.HasKey(x => new { x.ReportCardId, x.SubjectCode, x.Year });
 
         builder.HasOne(x => x.Subject)
