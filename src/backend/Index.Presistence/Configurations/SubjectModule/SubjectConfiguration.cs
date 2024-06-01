@@ -5,7 +5,7 @@ internal class SubjectConfiguration : IEntityTypeConfiguration<Subject>
     public void Configure(EntityTypeBuilder<Subject> builder)
     {
         builder.HasKey(x => x.SubjectCode);
-        builder.ToTable("Subjects", "sub");
+        builder.ToTable("Subjects", DatabaseSchema.Subject);
 
         builder.Property(x => x.SubjectCode)
             .IsRequired()

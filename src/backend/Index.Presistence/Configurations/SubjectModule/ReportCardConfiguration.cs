@@ -5,7 +5,7 @@ internal class ReportCardConfiguration : IEntityTypeConfiguration<ReportCard>
     public void Configure(EntityTypeBuilder<ReportCard> builder)
     {
         builder.HasKey(x => x.Id);
-        builder.ToTable("ReportCards", "sub");
+        builder.ToTable("ReportCards", DatabaseSchema.Subject);
 
         builder.Property(x => x.Id)
             .ValueGeneratedOnAdd()

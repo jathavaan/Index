@@ -4,7 +4,7 @@ internal class AssignmentGroupConfiguration : IEntityTypeConfiguration<Assignmen
 {
     public void Configure(EntityTypeBuilder<AssignmentGroup> builder)
     {
-        builder.ToTable("AssignmentGroups", "sub");
+        builder.ToTable("AssignmentGroups", DatabaseSchema.Subject);
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id)
