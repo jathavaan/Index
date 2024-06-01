@@ -1,4 +1,4 @@
-﻿namespace Index.Api.ProgramConfigurations;
+﻿namespace Index.Api.Configurations;
 
 internal static class WebApplicationConfiguration
 {
@@ -9,6 +9,7 @@ internal static class WebApplicationConfiguration
             app.ConfigureSwagger();
         }
 
+        app.AddSeriLog();
         app.UseHttpsRedirection();
         app.AddAuthenticationAndAuthorization();
         app.MapControllers();
@@ -28,13 +29,14 @@ internal static class WebApplicationConfiguration
         return app;
     }
 
-    private static WebApplication MapIdentityApi(this WebApplication app)
+    private static WebApplication AddAuthenticationAndAuthorization(this WebApplication app)
     {
         return app;
     }
 
-    private static WebApplication AddAuthenticationAndAuthorization(this WebApplication app)
+    private static WebApplication AddSeriLog(this WebApplication app)
     {
+        app.UseSerilogRequestLogging();
         return app;
     }
 }

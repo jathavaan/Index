@@ -3,6 +3,9 @@
 .code/
 .vs/
 
+# Logs
+Logs/
+
 # User-specific files
 *.suo
 *.user
