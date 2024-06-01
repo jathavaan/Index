@@ -48,8 +48,7 @@ public static class WebApplicationBuilderConfigurations
             var client = builder.ConfigureAzureKeyVault();
 
             builder.Services.AddDbContext<IndexDbContext>(options =>
-                options.UseSqlServer(client.GetSecret("ConnectionStrings--Index").Value.Value)
-                    .EnableSensitiveDataLogging());
+                options.UseSqlServer(client.GetSecret("ConnectionStrings--Index").Value.Value));
         }
 
         builder.Services.AddIdentity<UserProfile, IdentityRole>()
@@ -68,20 +67,8 @@ public static class WebApplicationBuilderConfigurations
 
     private static void ConfigureLogging(this WebApplicationBuilder builder)
     {
-        Log.Logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(builder.Configuration)
-            .Enrich.FromLogContext()
-            .WriteTo.Console()
-            .CreateBootstrapLogger();
-
-        builder.Host.UseSerilog((context, loggerConfiguration) =>
-        {
-            SelfLog.Enable(Console.WriteLine);
-
-            loggerConfiguration.ReadFrom.Configuration(context.Configuration)
-                .Enrich.WithMachineName()
-                .WriteTo.Console();
-        }, true);
+        builder.Host.UseSerilog((context, configuration) =>
+            configuration.ReadFrom.Configuration(context.Configuration));
     }
 
     private static void ConfigureModelExamples(this WebApplicationBuilder builder)
