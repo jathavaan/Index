@@ -1,0 +1,30 @@
+services:
+  index-api.sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: index-api-sqlserver
+    environment:
+      - SA_PASSWORD=!DevIndexSqlServer2024
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+  index-api.redis:
+    image: redis:latest
+    container_name: index-api-redis
+    ports:
+      - "6379:6379"
+
+  index-api.seq:
+    image: datalust/seq:latest
+    container_name: index-api-seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "5341:5341"
+      - 8081:80
+
+volumes:
+  sqlserver_data:
+  seq_data:
